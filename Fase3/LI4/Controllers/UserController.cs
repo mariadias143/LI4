@@ -26,43 +26,9 @@ namespace LI4.Controllers
             return View();
         }
 
-        public IActionResult About(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Utilizador utilizador = db.Utilizador.Find(id);
-            if (utilizador == null)
-            {
-                return HttpNotFound();
-            }
-            return View(utilizador);
-        }
-
         public IActionResult Create()
         {
             return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(CreateModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                Utilizador utilizador = new Utilizador();
-                utilizador.Email = model.Email;
-                utilizador.Nome = model.Nome;
-                utilizador.Password = model.Password;
-                utilizador.Username = model.Username;
-                utilizador.Admin = 1;
-                db.Utilizador.Add(utilizador);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(model);
         }
 
 

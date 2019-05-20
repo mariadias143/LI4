@@ -121,4 +121,9 @@ namespace LI4.Models
             return base.GetHashCode();
         }
     }
+
+    public class UserContext
+    {
+       
+    }
 }

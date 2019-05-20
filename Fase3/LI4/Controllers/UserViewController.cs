@@ -19,8 +19,8 @@ namespace LI4.Controllers
         }
 
         public IActionResult getUsers()
-        {
-            User[] users = userHandling.getUsers();
+        {  
+            Utilizador[] users = userHandling.getUsers();
             return View(users);
         }
 
