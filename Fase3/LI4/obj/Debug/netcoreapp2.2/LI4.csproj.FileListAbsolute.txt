@@ -1,14 +1,37 @@
-C:\Users\PC - Luis\source\repos\LI4\bin\Debug\netcoreapp2.2\LI4.deps.json
-C:\Users\PC - Luis\source\repos\LI4\bin\Debug\netcoreapp2.2\LI4.runtimeconfig.json
-C:\Users\PC - Luis\source\repos\LI4\bin\Debug\netcoreapp2.2\LI4.runtimeconfig.dev.json
-C:\Users\PC - Luis\source\repos\LI4\bin\Debug\netcoreapp2.2\LI4.dll
-C:\Users\PC - Luis\source\repos\LI4\bin\Debug\netcoreapp2.2\LI4.pdb
-C:\Users\PC - Luis\source\repos\LI4\obj\Debug\netcoreapp2.2\LI4.csprojAssemblyReference.cache
-C:\Users\PC - Luis\source\repos\LI4\obj\Debug\netcoreapp2.2\LI4.csproj.CoreCompileInputs.cache
-C:\Users\PC - Luis\source\repos\LI4\obj\Debug\netcoreapp2.2\LI4.RazorAssemblyInfo.cache
-C:\Users\PC - Luis\source\repos\LI4\obj\Debug\netcoreapp2.2\LI4.RazorAssemblyInfo.cs
-C:\Users\PC - Luis\source\repos\LI4\obj\Debug\netcoreapp2.2\LI4.AssemblyInfoInputs.cache
-C:\Users\PC - Luis\source\repos\LI4\obj\Debug\netcoreapp2.2\LI4.AssemblyInfo.cs
-C:\Users\PC - Luis\source\repos\LI4\obj\Debug\netcoreapp2.2\LI4.RazorTargetAssemblyInfo.cache
-C:\Users\PC - Luis\source\repos\LI4\obj\Debug\netcoreapp2.2\LI4.dll
-C:\Users\PC - Luis\source\repos\LI4\obj\Debug\netcoreapp2.2\LI4.pdb
+C:/Users/PC - Luis/source/repos/LI4/bin/Debug/netcoreapp2.2/LI4.deps.json
+C:/Users/PC - Luis/source/repos/LI4/bin/Debug/netcoreapp2.2/LI4.runtimeconfig.json
+C:/Users/PC - Luis/source/repos/LI4/bin/Debug/netcoreapp2.2/LI4.runtimeconfig.dev.json
+C:/Users/PC - Luis/source/repos/LI4/bin/Debug/netcoreapp2.2/LI4.dll
+C:/Users/PC - Luis/source/repos/LI4/bin/Debug/netcoreapp2.2/LI4.pdb
+C:/Users/PC - Luis/source/repos/LI4/obj/Debug/netcoreapp2.2/LI4.csprojAssemblyReference.cache
+C:/Users/PC - Luis/source/repos/LI4/obj/Debug/netcoreapp2.2/LI4.csproj.CoreCompileInputs.cache
+C:/Users/PC - Luis/source/repos/LI4/obj/Debug/netcoreapp2.2/LI4.RazorAssemblyInfo.cache
+C:/Users/PC - Luis/source/repos/LI4/obj/Debug/netcoreapp2.2/LI4.RazorAssemblyInfo.cs
+C:/Users/PC - Luis/source/repos/LI4/obj/Debug/netcoreapp2.2/LI4.AssemblyInfoInputs.cache
+C:/Users/PC - Luis/source/repos/LI4/obj/Debug/netcoreapp2.2/LI4.AssemblyInfo.cs
+C:/Users/PC - Luis/source/repos/LI4/obj/Debug/netcoreapp2.2/LI4.RazorTargetAssemblyInfo.cache
+C:/Users/PC - Luis/source/repos/LI4/obj/Debug/netcoreapp2.2/LI4.dll
+C:/Users/PC - Luis/source/repos/LI4/obj/Debug/netcoreapp2.2/LI4.pdb
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.csprojAssemblyReference.cache
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.csproj.CoreCompileInputs.cache
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.RazorAssemblyInfo.cache
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.RazorAssemblyInfo.cs
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.AssemblyInfoInputs.cache
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.AssemblyInfo.cs
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.dll
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.pdb
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/bin/Debug/netcoreapp2.2/LI4.deps.json
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/bin/Debug/netcoreapp2.2/LI4.runtimeconfig.json
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/bin/Debug/netcoreapp2.2/LI4.runtimeconfig.dev.json
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/bin/Debug/netcoreapp2.2/LI4.dll
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/bin/Debug/netcoreapp2.2/LI4.pdb
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/bin/Debug/netcoreapp2.2/LI4.Views.dll
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/bin/Debug/netcoreapp2.2/LI4.Views.pdb
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.TagHelpers.input.cache
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.TagHelpers.output.cache
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.RazorCoreGenerate.cache
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.RazorTargetAssemblyInfo.cache
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.RazorTargetAssemblyInfo.cs
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.Views.pdb
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/LI4.csproj.CopyComplete
+/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_Layout.g.cshtml.cs

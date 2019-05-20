@@ -115,5 +115,10 @@ namespace LI4.Models
         {
             return base.ToString();
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
