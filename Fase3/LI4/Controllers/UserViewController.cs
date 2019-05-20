@@ -31,7 +31,7 @@ namespace LI4.Controllers
         }
 
         [HttpPost]
-        public IActionResult RegisterUser([Bind] User user)
+        public IActionResult RegisterUser([Bind] Utilizador user)
         {
             if (ModelState.IsValid)
             {
