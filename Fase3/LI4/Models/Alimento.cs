@@ -1,4 +1,6 @@
-﻿namespace LI4.Models
+﻿using System;
+
+namespace LI4.Models
 {
     public class Alimento
     {

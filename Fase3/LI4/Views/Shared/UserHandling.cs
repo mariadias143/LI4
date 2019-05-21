@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LI4.Models;
+using static LI4.Models.Utilizador;
 
 namespace LI4.Views.Shared
 {
@@ -23,5 +24,9 @@ namespace LI4.Views.Shared
             return null;
         }
 
+        internal bool RegisterUser(Utilizador user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

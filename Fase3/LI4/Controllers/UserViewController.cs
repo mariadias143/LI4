@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LI4.Models;
+using static LI4.Models.Utilizador;
+using LI4.Views.Shared;
 
 namespace LI4.Controllers
 {

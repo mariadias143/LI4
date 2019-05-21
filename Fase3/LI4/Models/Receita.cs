@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace LI4.Models
 {
     public class Receita
