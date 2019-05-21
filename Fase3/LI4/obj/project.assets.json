@@ -12089,11 +12089,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/LI4.csproj",
+      "projectUniqueName": "/Users/mariadias/Documents/MIEI/3º ANO/2/TP-LI4/LI4/Fase3/LI4/LI4.csproj",
       "projectName": "LI4",
-      "projectPath": "/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/LI4.csproj",
+      "projectPath": "/Users/mariadias/Documents/MIEI/3º ANO/2/TP-LI4/LI4/Fase3/LI4/LI4.csproj",
       "packagesPath": "/Users/mariadias/.nuget/packages/",
-      "outputPath": "/Users/mariadias/Documents/MIEI/3º ANO/2/LI4/LI4/LI4/Fase3/LI4/obj/",
+      "outputPath": "/Users/mariadias/Documents/MIEI/3º ANO/2/TP-LI4/LI4/Fase3/LI4/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

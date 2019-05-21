@@ -10,28 +10,37 @@ namespace LI4.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Pantry()
         {
             ViewData["Message"] = "Your application description page.";
 
-            return View();
+            return View("Pantry");
         }
 
-        public IActionResult Contact()
+        public IActionResult WeekPlan()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Your application description page.";
 
-            return View();
+            return View("WeekPlan");
         }
 
-        public IActionResult Privacy()
+        public IActionResult Cookbook()
         {
-            return View();
+            ViewData["Message"] = "Your application description page.";
+
+            return View("Cookbook");
+        }
+
+        public IActionResult ShoppingList()
+        {
+            ViewData["Message"] = "Your application description page.";
+
+            return View("ShoppingList");
         }
 
     }
