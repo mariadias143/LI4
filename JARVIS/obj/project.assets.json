@@ -12425,11 +12425,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mariadias/Documents/JARVIS/JARVIS/JARVIS.csproj",
+      "projectUniqueName": "/Users/mariadias/Documents/PROJETO/Jarvis/JARVIS/JARVIS.csproj",
       "projectName": "JARVIS",
-      "projectPath": "/Users/mariadias/Documents/JARVIS/JARVIS/JARVIS.csproj",
+      "projectPath": "/Users/mariadias/Documents/PROJETO/Jarvis/JARVIS/JARVIS.csproj",
       "packagesPath": "/Users/mariadias/.nuget/packages/",
-      "outputPath": "/Users/mariadias/Documents/JARVIS/JARVIS/obj/",
+      "outputPath": "/Users/mariadias/Documents/PROJETO/Jarvis/JARVIS/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
