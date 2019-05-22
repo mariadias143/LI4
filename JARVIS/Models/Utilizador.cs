@@ -7,7 +7,7 @@ namespace JARVIS.Models
         public int id;
         public string nome;
         public DateTime data_nascimento;
-        public int username;
+        public string username;
         public string password;
         public string email;
         public string foto;
