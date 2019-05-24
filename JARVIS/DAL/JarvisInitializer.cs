@@ -12,11 +12,11 @@ namespace JARVIS.DAL
         {
             var users = new List<Utilizador>
             {
-                new Utilizador{nome="Filipa",data_nascimento=DateTime.Parse("1998-10-12"),username="Mercy132",password="pipoca",email="welele@gmail.com",foto=null,admin=1},
-                new Utilizador{nome="Maria",data_nascimento=DateTime.Parse("1998-03-29"),username="niques",password="wee",email="flurry@gmail.com",foto=null,admin=1},
-                new Utilizador{nome="Chico",data_nascimento=DateTime.Parse("1998-01-05"),username="Cyborg",password="lalala",email="laurindinha@gmail.com",foto=null,admin=1},
-                new Utilizador{nome="Ines",data_nascimento=DateTime.Parse("1998-11-02"),username="sb_59",password="bentinhas",email="aaalves@gmail.com",foto=null,admin=1},
-                new Utilizador{nome="Pedro",data_nascimento=DateTime.Parse("1998-10-02"),username="sards90",password="crica",email="noobenta@gmail.com",foto=null,admin=1}
+                new Utilizador{Nome="Filipa",Data_nascimento=DateTime.Parse("1998-10-12"),Username="Mercy132",Password="pipoca",Email="welele@gmail.com",Foto=null,Admin=1},
+                new Utilizador{Nome="Maria",Data_nascimento=DateTime.Parse("1998-03-29"),Username="niques",Password="wee",Email="flurry@gmail.com",Foto=null,Admin=1},
+                new Utilizador{Nome="Chico",Data_nascimento=DateTime.Parse("1998-01-05"),Username="Cyborg",Password="lalala",Email="laurindinha@gmail.com",Foto=null,Admin=1},
+                new Utilizador{Nome="Ines",Data_nascimento=DateTime.Parse("1998-11-02"),Username="sb_59",Password="bentinhas",Email="aaalves@gmail.com",Foto=null,Admin=1},
+                new Utilizador{Nome="Pedro",Data_nascimento=DateTime.Parse("1998-10-02"),Username="sards90",Password="crica",Email="noobenta@gmail.com",Foto=null,Admin=1}
             };
             users.ForEach(s => context.Utilizadores.Add(s));
             context.SaveChanges();

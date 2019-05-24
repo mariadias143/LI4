@@ -7,11 +7,11 @@ namespace JARVIS.Models
         public int Id { get; set; }
         public string Descricao { get; set; }
         public string Nome { get; set; }
-        public int IdProprietario { get; set; }
         public virtual List<Alimento> Ingredientes { get; set; }
-        public int Duracao { get; set; } // em minutos
+        public int Duracao { get; set; }
+        public int Dificuldade { get; set; }
         public virtual List<Passo> Passos { get; set; }
-        public virtual List<Avaliacao> Avaliacoes { get; set; }
+        public float Classificacao { get; set; }
     
     }
 }
