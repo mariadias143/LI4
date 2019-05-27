@@ -10,7 +10,7 @@ namespace JARVIS.DataAccess
 
         public Connection()
         {
-            _connection = new SqlConnection("Data Source=localhost; database=jarvis;" + "User ID=root; Password = root");
+            _connection = new SqlConnection("Data Source=localhost; Initial Catalog=JarvisDB;" + "User ID=SA; Password = yourStrong(!)Password");
         }
 
         public void close()

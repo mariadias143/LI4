@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using JARVIS.Models;
+using JARVIS.DataAccess;
 
 namespace JARVIS.Controllers
 {
@@ -14,6 +15,7 @@ namespace JARVIS.Controllers
         {
             return View();
         }
+
 
         public ActionResult Login()
         {
@@ -26,8 +28,7 @@ namespace JARVIS.Controllers
         }
 
         public IActionResult Pantry()
-        {
-            ViewData["Message"] = "Your application description page.";
+        { 
 
             return View("Pantry");
         }

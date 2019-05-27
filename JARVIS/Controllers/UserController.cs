@@ -13,6 +13,7 @@ namespace JARVIS.Controllers
     public class UserController : Controller
     {
         private UserHandling userHandling;
+
         public UserController(UserContext context)
         {
             userHandling = new UserHandling(context);

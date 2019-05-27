@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "b809ff2388f35776d68c869e48277d3993e18363"
+    "signature": "ebffa6ba65c58dc75fd64d952a1037db98019f4c"
   },
   "compilationOptions": {
     "defines": [
@@ -28,7 +28,6 @@
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
-          "MySql.Data": "8.0.16",
           "System.Data.SQLite": "1.0.110",
           "bootstrap": "4.3.1"
         },
@@ -43,22 +42,6 @@
         "dependencies": {
           "jQuery": "3.0.0",
           "popper.js": "1.14.0"
-        }
-      },
-      "BouncyCastle.NetCore/1.8.3": {
-        "dependencies": {
-          "NETStandard.Library": "2.0.3",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
-            "assemblyVersion": "1.8.2.0",
-            "fileVersion": "1.8.18099.1"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
       "EntityFramework/6.2.0": {
@@ -77,54 +60,8 @@
           "lib/net45/EntityFramework.dll": {}
         }
       },
-      "Google.Protobuf/3.6.1": {
-        "dependencies": {
-          "NETStandard.Library": "2.0.3"
-        },
-        "runtime": {
-          "lib/netstandard1.0/Google.Protobuf.dll": {
-            "assemblyVersion": "3.6.1.0",
-            "fileVersion": "3.6.1.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard1.0/Google.Protobuf.dll": {}
-        }
-      },
       "jQuery/3.0.0": {},
-      "MySql.Data/8.0.16": {
-        "dependencies": {
-          "BouncyCastle.NetCore": "1.8.3",
-          "Google.Protobuf": "3.6.1",
-          "System.Configuration.ConfigurationManager": "4.4.1",
-          "System.Security.Permissions": "4.5.0",
-          "System.Text.Encoding.CodePages": "4.5.0"
-        },
-        "runtime": {
-          "lib/netcoreapp2.0/MySql.Data.dll": {
-            "assemblyVersion": "8.0.16.0",
-            "fileVersion": "8.0.16.0"
-          }
-        },
-        "compile": {
-          "lib/netcoreapp2.0/MySql.Data.dll": {}
-        }
-      },
       "popper.js/1.14.0": {},
-      "System.Configuration.ConfigurationManager/4.4.1": {
-        "dependencies": {
-          "System.Security.Cryptography.ProtectedData": "4.4.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.6.25921.2"
-          }
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
-        }
-      },
       "System.Data.SQLite/1.0.110": {
         "dependencies": {
           "System.Data.SQLite.Core": "1.0.110"
@@ -161,22 +98,6 @@
         },
         "compile": {
           "lib/netstandard2.0/System.Data.SQLite.dll": {}
-        }
-      },
-      "System.Security.Cryptography.ProtectedData/4.4.0": {
-        "runtime": {
-          "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
-            "assemblyVersion": "4.0.2.0",
-            "fileVersion": "4.6.25519.3"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "4.0.2.0",
-            "fileVersion": "4.6.25519.3"
-          }
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3197,9 +3118,6 @@
           "Microsoft.NETCore.Platforms": "2.2.0",
           "System.Runtime.CompilerServices.Unsafe": "4.5.1"
         },
-        "compile": {
-          "ref/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
-        },
         "compileOnly": true
       },
       "System.Text.Encoding.Extensions/4.3.0": {
@@ -3391,26 +3309,12 @@
       "path": "bootstrap/4.3.1",
       "hashPath": "bootstrap.4.3.1.nupkg.sha512"
     },
-    "BouncyCastle.NetCore/1.8.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-An0cxp/uGPkMWfjAVyHJWBQ9igea74Ma8rtMnpkEwjemx8EoVo7IUIFpFfxpBgVuSbpQueKo2m/CoSxxfLHTtw==",
-      "path": "bouncycastle.netcore/1.8.3",
-      "hashPath": "bouncycastle.netcore.1.8.3.nupkg.sha512"
-    },
     "EntityFramework/6.2.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-+aB/cnEAr9KqVMjmZwu+Fzy3EOPjCIzNsPAUyn19WbB2u3LFHd2OB3X56ohAj7EBf2hppl9M27nlRnkQxOhoAA==",
       "path": "entityframework/6.2.0",
       "hashPath": "entityframework.6.2.0.nupkg.sha512"
-    },
-    "Google.Protobuf/3.6.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-D/h9IZl76jjfM5VlPzG235Zdys9RKXNLYbRGm2fa6Y2UshTqAvYBPIydNOvNTEa24DER/m/zvelHlLO9n1GtNQ==",
-      "path": "google.protobuf/3.6.1",
-      "hashPath": "google.protobuf.3.6.1.nupkg.sha512"
     },
     "jQuery/3.0.0": {
       "type": "package",
@@ -3419,26 +3323,12 @@
       "path": "jquery/3.0.0",
       "hashPath": "jquery.3.0.0.nupkg.sha512"
     },
-    "MySql.Data/8.0.16": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-PQC4+MznUsZoUJq3CJ+NLJ8ilSOYlBjoIxVsLbyu95G93ZarB+8sUQHM5urHM6LxpKtAZ3+SFasTz8VcPjhDmA==",
-      "path": "mysql.data/8.0.16",
-      "hashPath": "mysql.data.8.0.16.nupkg.sha512"
-    },
     "popper.js/1.14.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-oamtAIKoHa/s45chV0TozJhrwTRUBURUVjFl1wHw1MrCplFDxmK41CMrMDQx1Eq08n7oEzqSHEPPWCdA6Mhb1w==",
       "path": "popper.js/1.14.0",
       "hashPath": "popper.js.1.14.0.nupkg.sha512"
-    },
-    "System.Configuration.ConfigurationManager/4.4.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-LoSjM/kLDpyLyoGsmwS5oVMRzHf/0XHkRpr3QZu/HuAv6Sfk919usTMLqD9N9VK3S4Q2+bd3tKJ0ko4MYFfq4Q==",
-      "path": "system.configuration.configurationmanager/4.4.1",
-      "hashPath": "system.configuration.configurationmanager.4.4.1.nupkg.sha512"
     },
     "System.Data.SQLite/1.0.110": {
       "type": "package",
@@ -3453,13 +3343,6 @@
       "sha512": "sha512-x7xZ0oBWycJch9ShAFwTQRPJ2HEo5NmXyhx/LFJvSbCBQVXnHc9rIAeLo1VXzDFbfbtPl3HFpFhriEnUkS2L0Q==",
       "path": "system.data.sqlite.core/1.0.110",
       "hashPath": "system.data.sqlite.core.1.0.110.nupkg.sha512"
-    },
-    "System.Security.Cryptography.ProtectedData/4.4.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-WwEexvBd+17yfY7fcS+fBGl+HADEfCJuKeDJqBT7D6j6vKwYvfLyGuq2y/MmrKORC6mbYwth7kjinO1mPhTL3g==",
-      "path": "system.security.cryptography.protecteddata/4.4.0",
-      "hashPath": "system.security.cryptography.protecteddata.4.4.0.nupkg.sha512"
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "type": "package",
