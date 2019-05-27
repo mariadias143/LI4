@@ -61,7 +61,7 @@ namespace JARVIS.DataAccess
                             idReceita = int.Parse(row["idReceita"].ToString()),
                             Nome = row["Nome"].ToString(),
                             Descricao = row["Descricao"].ToString(),
-                            Duracao = TimeSpan.Parse(row["Duracao"].ToString())
+                            Duracao = int.Parse(row["Duracao"].ToString())
                         };
                         receitas.Add(r);
                     }
