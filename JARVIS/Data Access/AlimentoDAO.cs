@@ -29,7 +29,7 @@ namespace JARVIS.DataAccess
 
                 command.Parameters.Add("@idAlimento", SqlDbType.Int).Value = obj.idAlimento;
                 command.Parameters.Add("@Nome", SqlDbType.Text).Value = obj.Nome;
-                command.Parameters.Add("@ValorNutricional", SqlDbType.Text).Value = obj.ValorNutricional;
+                command.Parameters.Add("@ValorNutricional", SqlDbType.Decimal).Value = obj.ValorNutricional;
                 command.Parameters.Add("@Validade", SqlDbType.Date).Value = obj.Validade;
 
                 command.ExecuteNonQuery();

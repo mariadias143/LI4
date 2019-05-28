@@ -46,7 +46,7 @@ namespace JARVIS.DataAccess
 
         public Collection<Utilizador> ListAll()
         {
-            Collection<Utilizador> alimentos = new Collection<Utilizador>();
+            Collection<Utilizador> utilizadores = new Collection<Utilizador>();
             using (SqlCommand command = _connection.Fetch().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
@@ -70,10 +70,10 @@ namespace JARVIS.DataAccess
                             Foto = row["Foto"].ToString(),
                             Admin = Boolean.Parse(row["Admin"].ToString())
                         };
-                        alimentos.Add(a);
+                        utilizadores.Add(a);
                     }
                 }
-                return alimentos;
+                return utilizadores;
             }
         }
 
@@ -90,7 +90,7 @@ namespace JARVIS.DataAccess
                 command.CommandType = CommandType.Text;
                 command.CommandText = "UPDATE Utilizador Set Nome==Nome WHERE idUtilizador==idUtilizador";
 
-                command.Parameters.Add("@Nome", SqlDbType.Decimal).Value = obj.Nome;
+                command.Parameters.Add("@Nome", SqlDbType.Text).Value = obj.Nome;
                 command.Parameters.Add("@idUtilizador", SqlDbType.Int).Value = obj.idUtilizador;
 
                 if (command.ExecuteNonQuery() > 0)
