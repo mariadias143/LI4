@@ -38,9 +38,9 @@ GO
 CREATE TABLE [Receita] (
   [idReceita] INT NOT NULL,
   [Nome] VARCHAR(45) NOT NULL,
-  [Descricao] VARCHAR(45) NULL,
-  [Duracao] TIME NOT NULL,
-  [Dificuldade] INT NOT NULL,
+  [Descricao] VARCHAR(150) NULL,
+  [Duracao] INT NOT NULL,
+  [Dificuldade] VARCHAR(20) NOT NULL,
   [Classificacao] DECIMAL(5,2) NOT NULL,
   PRIMARY KEY ([idReceita]))
 ;
@@ -151,21 +151,21 @@ GO
 CREATE TABLE [Receita_Alimento] (
   [Receita_idReceita] INT NOT NULL,
   [Alimento_idAlimento] INT NOT NULL,
-  [Quantidade] DECIMAL(5,2) NULL,
+  [Quantidade] VARCHAR(45) NOT NULL,
   PRIMARY KEY ([Receita_idReceita], [Alimento_idAlimento]),
   CONSTRAINT [fk_Receita_has_Alimento_Receita1]
     FOREIGN KEY ([Receita_idReceita])
     REFERENCES [Receita] ([idReceita])
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT [fk_Receita_has_Alimento_Alimento1]
+  CONSTRAINT [fk_Receita_has_Alimento_Alimento4]
     FOREIGN KEY ([Alimento_idAlimento])
     REFERENCES [Alimento] ([idAlimento])
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ;
 GO
-CREATE INDEX [fk_Receita_has_Alimento_Alimento1_idx] ON [Receita_Alimento] ([Alimento_idAlimento] ASC);
+CREATE INDEX [fk_Receita_has_Alimento_Alimento4_idx] ON [Receita_Alimento] ([Alimento_idAlimento] ASC);
 GO
 CREATE INDEX [fk_Receita_has_Alimento_Receita1_idx] ON [Receita_Alimento] ([Receita_idReceita] ASC);
 GO
@@ -176,7 +176,7 @@ GO
 -- -----------------------------------------------------
 CREATE TABLE [Instrução] (
   [idInstrução] INT NOT NULL,
-  [Descrição] VARCHAR(45) NULL,
+  [Descrição] VARCHAR(300) NULL,
   [Ordem] INT NULL,
   [Receita_idReceita] INT NOT NULL,
   PRIMARY KEY ([idInstrução]),
@@ -197,21 +197,21 @@ CREATE TABLE [Histórico] (
   [Utilizador_idUtilizador] INT NOT NULL,
   [Receita_idReceita] INT NOT NULL,
   PRIMARY KEY ([Utilizador_idUtilizador], [Receita_idReceita]),
-  CONSTRAINT [fk_Utilizador_has_Receita_Utilizador1]
+  CONSTRAINT [fk_Utilizador_has_Receita_Utilizador3]
     FOREIGN KEY ([Utilizador_idUtilizador])
     REFERENCES [Utilizador] ([idUtilizador])
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT [fk_Utilizador_has_Receita_Receita1]
+  CONSTRAINT [fk_Utilizador_has_Receita_Receita2]
     FOREIGN KEY ([Receita_idReceita])
     REFERENCES [Receita] ([idReceita])
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ;
 GO
-CREATE INDEX [fk_Utilizador_has_Receita_Receita1_idx] ON [Histórico] ([Receita_idReceita] ASC);
+CREATE INDEX [fk_Utilizador_has_Receita_Receita2_idx] ON [Histórico] ([Receita_idReceita] ASC);
 GO
-CREATE INDEX [fk_Utilizador_has_Receita_Utilizador1_idx] ON [Histórico] ([Utilizador_idUtilizador] ASC);
+CREATE INDEX [fk_Utilizador_has_Receita_Utilizador3_idx] ON [Histórico] ([Utilizador_idUtilizador] ASC);
 GO
 
 -- -----------------------------------------------------
@@ -255,7 +255,6 @@ GO
 CREATE INDEX [fk_Ementa_has_Receita_Ementa1_idx] ON [Ementa_Receita] ([Ementa_idEmenta] ASC);
 GO
 
------------------
 
 -- -----------------------------------------------------
 -- Table `mydb`.`ListaCompras`
@@ -264,21 +263,21 @@ CREATE TABLE [ListaCompras] (
   [Utilizador_idUtilizador] INT NOT NULL,
   [Alimento_idAlimento] INT NOT NULL,
   PRIMARY KEY ([Utilizador_idUtilizador], [Alimento_idAlimento]),
-  CONSTRAINT [fk_Utilizador_has_Alimento_Utilizador1]
+  CONSTRAINT [fk_Utilizador_has_Alimento_Utilizador3]
     FOREIGN KEY ([Utilizador_idUtilizador])
     REFERENCES [Utilizador] ([idUtilizador])
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT [fk_Utilizador_has_Alimento_Alimento1]
+  CONSTRAINT [fk_Utilizador_has_Alimento_Alimento5]
     FOREIGN KEY ([Alimento_idAlimento])
     REFERENCES [Alimento] ([idAlimento])
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ;
 GO
-CREATE INDEX [fk_Utilizador_has_Alimento_Alimento1_idx] ON [ListaCompras] ([Alimento_idAlimento] ASC);
+CREATE INDEX [fk_Utilizador_has_Alimento_Alimento5_idx] ON [ListaCompras] ([Alimento_idAlimento] ASC);
 GO
-CREATE INDEX [fk_Utilizador_has_Alimento_Utilizador1_idx] ON [ListaCompras] ([Utilizador_idUtilizador] ASC);
+CREATE INDEX [fk_Utilizador_has_Alimento_Utilizador3_idx] ON [ListaCompras] ([Utilizador_idUtilizador] ASC);
 GO
 
 
@@ -287,36 +286,21 @@ GO
 -- -----------------------------------------------------
 CREATE TABLE [Alimento_Alternativo] (
   [Alimento_idAlimento] INT NOT NULL,
-  [Alimento_idAlimento] INT NOT NULL,
-  PRIMARY KEY ([Alimento_idAlimento], [Alimento_idAlimento]),
-  CONSTRAINT [fk_Utilizador_has_Alimento_Alimento1]
+  [Alimento_idAlimentoAlt] INT NOT NULL,
+  PRIMARY KEY ([Alimento_idAlimento], [Alimento_idAlimentoAlt]),
+  CONSTRAINT [fk_Utilizador_has_Alimento_Alimento6]
     FOREIGN KEY ([Alimento_idAlimento])
     REFERENCES [Alimento] ([idAlimento])
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT [fk_Utilizador_has_Alimento_Alimento2]
-    FOREIGN KEY ([Alimento_idAlimento])
+  CONSTRAINT [fk_Utilizador_has_Alimento_Alimento7]
+    FOREIGN KEY ([Alimento_idAlimentoAlt])
     REFERENCES [Alimento] ([idAlimento])
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ;
 GO
-CREATE INDEX [fk_Utilizador_has_Alimento_Alimento1_idx] ON [Alimento_Alternativo] ([Alimento_idAlimento] ASC);
+CREATE INDEX [fk_Utilizador_has_Alimento_Alimento6_idx] ON [Alimento_Alternativo] ([Alimento_idAlimento] ASC);
 GO
-CREATE INDEX [fk_Utilizador_has_Alimento_Alimento2_idx] ON [Alimento_Alternativo] ([Alimento_idAlimento] ASC);
+CREATE INDEX [fk_Utilizador_has_Alimento_Alimento7_idx] ON [Alimento_Alternativo] ([Alimento_idAlimento] ASC);
 GO
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-

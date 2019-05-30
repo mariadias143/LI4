@@ -26,13 +26,14 @@ namespace JARVIS.DataAccess
             using (SqlCommand command = _connection.Fetch().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = "INSERT INTO Receita values (@idReceita,@Nome,@Descricao,@Duracao,@Classificacao)";
+                command.CommandText = "INSERT INTO Receita values (@idReceita,@Nome,@Descricao,@Duracao,@Classificacao,@Dificuldade)";
 
                 command.Parameters.Add("@idReceita", SqlDbType.Int).Value = obj.idReceita;
                 command.Parameters.Add("@Nome", SqlDbType.Text).Value = obj.Nome;
                 command.Parameters.Add("@Descricao", SqlDbType.Text).Value = obj.Descricao;
-                command.Parameters.Add("@Duracao", SqlDbType.Time).Value = obj.Duracao;
+                command.Parameters.Add("@Duracao", SqlDbType.Int).Value = obj.Duracao;
                 command.Parameters.Add("@Classificacao", SqlDbType.Decimal).Value = obj.Classificacao;
+                command.Parameters.Add("@Dificuldade", SqlDbType.Text).Value = obj.Dificuldade;
 
                 command.ExecuteNonQuery();
                 // obj.Id = command.ExecuteScalar().ToString(); -> devolve o valor da primeira linha e primeira coluna da tabela em questão
@@ -48,7 +49,7 @@ namespace JARVIS.DataAccess
             using (SqlCommand command = _connection.Fetch().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = "SELECT idReceita, Nome, Descricao, Duracao, Classificacao";
+                command.CommandText = "SELECT idReceita, Nome, Descricao, Duracao, Classificacao, Dificuldade";
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                 {
@@ -63,7 +64,8 @@ namespace JARVIS.DataAccess
                             Nome = row["Nome"].ToString(),
                             Descricao = row["Descricao"].ToString(),
                             Duracao = int.Parse(row["Duracao"].ToString()),
-                            Classificacao = float.Parse(row["Classificacao"].ToString())
+                            Classificacao = float.Parse(row["Classificacao"].ToString()),
+                            Dificuldade = row["Dificuldade"].ToString()
                         };
                         receitas.Add(r);
                     }
