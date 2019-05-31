@@ -12322,23 +12322,23 @@
     ]
   },
   "packageFolders": {
-    "/Users/mariadias/.nuget/packages/": {},
+    "/Users/pedrofreitas/.nuget/packages/": {},
     "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mariadias/Documents/PROJETO/Jarvis/JARVIS/JARVIS.csproj",
+      "projectUniqueName": "/Users/pedrofreitas/Desktop/LI4/Jarvis/JARVIS/JARVIS.csproj",
       "projectName": "JARVIS",
-      "projectPath": "/Users/mariadias/Documents/PROJETO/Jarvis/JARVIS/JARVIS.csproj",
-      "packagesPath": "/Users/mariadias/.nuget/packages/",
-      "outputPath": "/Users/mariadias/Documents/PROJETO/Jarvis/JARVIS/obj/",
+      "projectPath": "/Users/pedrofreitas/Desktop/LI4/Jarvis/JARVIS/JARVIS.csproj",
+      "packagesPath": "/Users/pedrofreitas/.nuget/packages/",
+      "outputPath": "/Users/pedrofreitas/Desktop/LI4/Jarvis/JARVIS/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/mariadias/.config/NuGet/NuGet.Config"
+        "/Users/pedrofreitas/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"

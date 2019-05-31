@@ -44,32 +44,40 @@ namespace JARVIS.DataAccess
         public Collection<Receita> ListAll()
         {
             Collection<Receita> receitas = new Collection<Receita>();
-
-            using (SqlCommand command = _connection.Fetch().CreateCommand())
+            using (SqlConnection con = _connection.Fetch())
             {
-                command.CommandType = CommandType.Text;
-                command.CommandText = "SELECT idReceita, Nome, Descricao, Duracao";
+                string queryString = "SELECT * FROM Receita";
 
-                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
-                    DataTable tab = new DataTable();
+                    adapter.SelectCommand = new SqlCommand(queryString, con);
+                    DataSet tab = new DataSet();
                     adapter.Fill(tab);
 
-                    foreach (DataRow row in tab.Rows)
+                    foreach (DataTable table in tab.Tables)
                     {
-                        Receita r = new Receita
+                        foreach (DataRow row in table.Rows)
                         {
-                            idReceita = int.Parse(row["idReceita"].ToString()),
-                            Nome = row["Nome"].ToString(),
-                            Descricao = row["Descricao"].ToString(),
-                            Duracao = int.Parse(row["Duracao"].ToString())
-                        };
-                        receitas.Add(r);
+                            Receita a = new Receita
+                            {
+                                idReceita = int.Parse(row["idReceita"].ToString()),
+                                Nome = row["Nome"].ToString(),
+                                Descricao = row["Descricao"].ToString(),
+                                Duracao = int.Parse(row["Duracao"].ToString())
+                            };
+                            receitas.Add(a);
+                        }
                     }
                 }
                 return receitas;
             }
         }
+
+
+
+
+
+
 
         public bool remove(string key)
         {
