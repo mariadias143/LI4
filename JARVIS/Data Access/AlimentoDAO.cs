@@ -15,27 +15,48 @@ namespace JARVIS.DataAccess
             _connection = connection;
         }
 
-        public Alimento FindById(string key)
-        {
-            throw new NotImplementedException();
+        public Alimento FindById(string key) { 
+            Alimento a = new Alimento();
+            using (SqlConnection con = _connection.Fetch())
+            {
+                string query = "SELECT * FROM Alimento where idAlimento=@idAlimento";
+                var dt = new DataTable();
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@idAlimento", key);
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        a.idAlimento= int.Parse(row["idAlimento"].ToString());
+                        a.Nome = row["Nome"].ToString();
+                        a.ValorNutricional = int.Parse(row["ValorNutricional"].ToString());
+                        a.Validade = DateTime.Parse(row["Validade"].ToString());           
+                    }
+                }
+            }
+            return a;
         }
+
+
 
         public Alimento Insert(Alimento obj)
         {
-            //SqCommand command ...
-            using (SqlCommand command = _connection.Fetch().CreateCommand())
+            using (SqlConnection con = _connection.Fetch())
             {
-                command.CommandType = CommandType.Text;
-                command.CommandText = "INSERT INTO Alimento values (@idAlimento,@Nome,@ValorNutricional,@Validade)";
+                String query = "INSERT INTO dbo.Alimento(Nome,ValorNutricional,Validade) values (@Nome,@ValorNutricional,@Validade)";
 
-                command.Parameters.Add("@idAlimento", SqlDbType.Int).Value = obj.idAlimento;
-                command.Parameters.Add("@Nome", SqlDbType.Text).Value = obj.Nome;
-                command.Parameters.Add("@ValorNutricional", SqlDbType.Text).Value = obj.ValorNutricional;
-                command.Parameters.Add("@Validade", SqlDbType.Date).Value = obj.Validade;
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.Add("@Nome", SqlDbType.VarChar).Value = obj.Nome;
+                    command.Parameters.Add("@ValorNutricional", SqlDbType.Int).Value=obj.ValorNutricional;
+                    command.Parameters.Add("@Validade", SqlDbType.Date).Value=obj.Validade;
 
-                command.ExecuteNonQuery();
-                // obj.Id = command.ExecuteScalar().ToString(); -> devolve o valor da primeira linha e primeira coluna da tabela em questão
-                //
+                    command.ExecuteNonQuery();
+
+                }
             }
             return obj;
         }
@@ -43,26 +64,29 @@ namespace JARVIS.DataAccess
         public Collection<Alimento> ListAll()
         {
             Collection<Alimento> alimentos = new Collection<Alimento>();
-            using (SqlCommand command = _connection.Fetch().CreateCommand())
+            using (SqlConnection con = _connection.Fetch())
             {
-                command.CommandType = CommandType.Text;
-                command.CommandText = "SELECT idAlimento, Nome, ValorNutricional, Validade";
+                string queryString = "SELECT * FROM Alimento";
 
-                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
-                    DataTable tab = new DataTable();
+                    adapter.SelectCommand = new SqlCommand(queryString, con);
+                    DataSet tab = new DataSet();
                     adapter.Fill(tab);
 
-                    foreach (DataRow row in tab.Rows)
+                    foreach (DataTable table in tab.Tables)
                     {
-                        Alimento a = new Alimento
+                        foreach (DataRow row in table.Rows)
                         {
-                            idAlimento = int.Parse(row["idAlimento"].ToString()),
-                            Nome = row["Nome"].ToString(),
-                            ValorNutricional = double.Parse(row["ValorNutricional"].ToString()),
-                            Validade = DateTime.Parse(row["Validade"].ToString())
-                        };
-                        alimentos.Add(a);
+                            Alimento a = new Alimento
+                            {
+                                idAlimento = int.Parse(row["idAlimento"].ToString()),
+                                Nome = row["Nome"].ToString(),
+                                ValorNutricional = int.Parse(row["ValorNutricional"].ToString()),
+                                Validade = DateTime.Parse(row["Validade"].ToString())                              
+                            };
+                            alimentos.Add(a);
+                        }
                     }
                 }
                 return alimentos;
@@ -71,26 +95,46 @@ namespace JARVIS.DataAccess
 
         public bool remove(string key)
         {
-            throw new NotImplementedException();
+            bool removed = false;
+            using (SqlConnection con = _connection.Fetch())
+            {
+                String query = "DELETE FROM dbo.Alimento where idAlimento=@idAlimento";
+
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@idAlimento", key);
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        removed = true;
+                    }
+                }
+            }
+            return removed;
         }
 
         public bool Update(string key, Alimento obj)
         {
             bool updated = false;
-            using (SqlCommand command = _connection.Fetch().CreateCommand())
+            using (SqlConnection con = _connection.Fetch())
             {
-                command.CommandType = CommandType.Text;
-                command.CommandText = "UPDATE Alimento Set ValorNutricional==ValorNutricional WHERE idAlimento==idAlimento";
+                String query = "UPDATE dbo.Alimento SET Nome=@Nome, ValorNutricional=@ValorNutricional, Validade=@Validade WHERE idAlimento=@idAlimento";
 
-                command.Parameters.Add("@ValorNutricional", SqlDbType.Decimal).Value = obj.ValorNutricional;
-                command.Parameters.Add("@idAlimento", SqlDbType.Int).Value = obj.idAlimento;
 
-                if (command.ExecuteNonQuery() > 0)
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
-                    updated = true;
+                    command.Parameters.AddWithValue("@Nome", obj.Nome);
+                    command.Parameters.AddWithValue("@ValorNutricional", obj.ValorNutricional);
+                    command.Parameters.AddWithValue("@Validade", obj.Validade);
+                    command.Parameters.AddWithValue("@idAlimento", key);
+
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        updated = true;
+                    }
                 }
             }
             return updated;
         }
     }
 }
+
