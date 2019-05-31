@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
+using JARVIS.Models;
 
 namespace JARVIS.DataAccess
 {
@@ -29,7 +30,7 @@ namespace JARVIS.DataAccess
 
                 command.Parameters.Add("@idAlimento", SqlDbType.Int).Value = obj.idAlimento;
                 command.Parameters.Add("@Nome", SqlDbType.Text).Value = obj.Nome;
-                command.Parameters.Add("@ValorNutricional", SqlDbType.Decimal).Value = obj.ValorNutricional;
+                command.Parameters.Add("@ValorNutricional", SqlDbType.Text).Value = obj.ValorNutricional;
                 command.Parameters.Add("@Validade", SqlDbType.Date).Value = obj.Validade;
 
                 command.ExecuteNonQuery();
@@ -68,12 +69,12 @@ namespace JARVIS.DataAccess
             }
         }
 
-        public bool remove(Alimento obj)
+        public bool remove(string key)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Alimento obj)
+        public bool Update(string key, Alimento obj)
         {
             bool updated = false;
             using (SqlCommand command = _connection.Fetch().CreateCommand())

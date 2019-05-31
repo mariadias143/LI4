@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
+using JARVIS.Models;
 
 namespace JARVIS.DataAccess
 {
@@ -16,29 +17,54 @@ namespace JARVIS.DataAccess
 
         public Utilizador FindById(string key)
         {
-            throw new NotImplementedException();
+            Utilizador u = new Utilizador();
+            using (SqlConnection con = _connection.Fetch())
+            {
+                string query = "SELECT * FROM Utilizador where idUtilizador=@idUtilizador";
+                var dt = new DataTable();
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@idUtilizador", key);
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        u.idUtilizador = int.Parse(row["idUtilizador"].ToString());
+                        u.Nome = row["Nome"].ToString();
+                        u.DataNascimento = DateTime.Parse(row["DataNascimento"].ToString());
+                        u.Username = row["Username"].ToString();
+                        u.Password = row["Password"].ToString();
+                        u.Email = row["Email"].ToString();
+                        u.Foto = row["Foto"].ToString();
+                        u.Admin = int.Parse(row["Admin"].ToString());
+                    }
+                }
+            }
+            return u;
         }
+
 
         public Utilizador Insert(Utilizador obj)
         {
-            //SqCommand command ...
-            using (SqlCommand command = _connection.Fetch().CreateCommand())
+            using (SqlConnection con = _connection.Fetch())
             {
-                command.CommandType = CommandType.Text;
-                command.CommandText = "INSERT INTO Utilizador values (@idUtilizador,@Nome,@DataNascimento,@Username,@Password,@Email,@Foto,@Admin)";
+                String query = "INSERT INTO dbo.Utilizador(Nome,DataNascimento,Username,Password,Email,Foto,Admin) values (@Nome,@DataNascimento,@Username,@Password,@Email,@Foto,@Admin)";
 
-                command.Parameters.Add("@idUtilizador", SqlDbType.Int).Value = obj.idUtilizador;
-                command.Parameters.Add("@Nome", SqlDbType.Text).Value = obj.Nome;
-                command.Parameters.Add("@DataNascimento", SqlDbType.Date).Value = obj.DataNascimento;
-                command.Parameters.Add("@Username", SqlDbType.Text).Value = obj.Username;
-                command.Parameters.Add("@Password", SqlDbType.Text).Value = obj.Password;
-                command.Parameters.Add("@Email", SqlDbType.Text).Value = obj.Email;
-                command.Parameters.Add("@Foto", SqlDbType.Text).Value = obj.Foto;
-                command.Parameters.Add("@Admin", SqlDbType.TinyInt).Value = obj.Admin;
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.Add("@Nome", SqlDbType.VarChar).Value = obj.Nome ?? (object)DBNull.Value;
+                    command.Parameters.Add("@DataNascimento", SqlDbType.Date).Value = obj.DataNascimento;
+                    command.Parameters.Add("@Username", SqlDbType.VarChar).Value = obj.Username ?? (object)DBNull.Value;
+                    command.Parameters.Add("@Password", SqlDbType.VarChar).Value = obj.Password ?? (object)DBNull.Value;
+                    command.Parameters.Add("@Email", SqlDbType.VarChar).Value = obj.Email ?? (object)DBNull.Value;
+                    command.Parameters.Add("@Foto", SqlDbType.VarChar).Value = obj.Foto ?? (object)DBNull.Value;
+                    command.Parameters.AddWithValue("@Admin", 0);
 
-                command.ExecuteNonQuery();
-                // obj.Id = command.ExecuteScalar().ToString(); -> devolve o valor da primeira linha e primeira coluna da tabela em questão
-                //
+                    command.ExecuteNonQuery();
+
+                }
             }
             return obj;
         }
@@ -46,56 +72,81 @@ namespace JARVIS.DataAccess
 
         public Collection<Utilizador> ListAll()
         {
-            Collection<Utilizador> utilizadores = new Collection<Utilizador>();
-            using (SqlCommand command = _connection.Fetch().CreateCommand())
+            Collection<Utilizador> alimentos = new Collection<Utilizador>();
+            using (SqlConnection con = _connection.Fetch())
             {
-                command.CommandType = CommandType.Text;
-                command.CommandText = "SELECT idUtilizador, Nome, DataNascimento, Username, Password, Email, Foto, Admin";
+                string queryString = "SELECT * FROM Utilizador";
 
-                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
-                    DataTable tab = new DataTable();
+                    adapter.SelectCommand = new SqlCommand(queryString, con);
+                    DataSet tab = new DataSet();
                     adapter.Fill(tab);
 
-                    foreach (DataRow row in tab.Rows)
+                    foreach (DataTable table in tab.Tables)
                     {
-                        Utilizador a = new Utilizador
+                        foreach (DataRow row in table.Rows)
                         {
-                            idUtilizador = int.Parse(row["idUtilizador"].ToString()),
-                            Nome = row["Nome"].ToString(),
-                            DataNascimento = DateTime.Parse(row["DataNascimento"].ToString()),
-                            Username = row["Username"].ToString(),
-                            Password = row["Password"].ToString(),
-                            Email = row["Email"].ToString(),
-                            Foto = row["Foto"].ToString(),
-                            Admin = Boolean.Parse(row["Admin"].ToString())
-                        };
-                        utilizadores.Add(a);
+                            Utilizador a = new Utilizador
+                            {
+                                idUtilizador = int.Parse(row["idUtilizador"].ToString()),
+                                Nome = row["Nome"].ToString(),
+                                DataNascimento = DateTime.Parse(row["DataNascimento"].ToString()),
+                                Username = row["Username"].ToString(),
+                                Password = row["Password"].ToString(),
+                                Email = row["Email"].ToString(),
+                                Foto = row["Foto"].ToString(),
+                                Admin = int.Parse(row["Admin"].ToString())
+                            };
+                            alimentos.Add(a);
+                        }
                     }
                 }
-                return utilizadores;
+                return alimentos;
             }
         }
 
-        public bool remove(Utilizador obj)
+        public bool remove(string key)
         {
-            throw new NotImplementedException();
+            bool removed = false;
+            using (SqlConnection con = _connection.Fetch())
+            {
+                String query = "DELETE FROM dbo.Utilizador where idUtilizador=@idUtilizador";
+
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@idUtilizador", key);
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        removed = true;
+                    }
+                }
+            }
+            return removed;
         }
 
-        public bool Update(Utilizador obj)
+        public bool Update(string key, Utilizador obj)
         {
             bool updated = false;
-            using (SqlCommand command = _connection.Fetch().CreateCommand())
+            using (SqlConnection con = _connection.Fetch())
             {
-                command.CommandType = CommandType.Text;
-                command.CommandText = "UPDATE Utilizador Set Nome==Nome WHERE idUtilizador==idUtilizador";
+                String query = "UPDATE dbo.Utilizador SET Nome=@Nome, DataNascimento=@DataNascimento, Username=@Username, Password=@Password, Email=@Email, Foto=@Foto WHERE idUtilizador=@idUtilizador";
 
-                command.Parameters.Add("@Nome", SqlDbType.Text).Value = obj.Nome;
-                command.Parameters.Add("@idUtilizador", SqlDbType.Int).Value = obj.idUtilizador;
 
-                if (command.ExecuteNonQuery() > 0)
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
-                    updated = true;
+                    command.Parameters.AddWithValue("@Nome", obj.Nome);
+                    command.Parameters.AddWithValue("@DataNascimento", obj.DataNascimento);
+                    command.Parameters.AddWithValue("@Username", obj.Username);
+                    command.Parameters.AddWithValue("@Password", obj.Password);
+                    command.Parameters.AddWithValue("@Email", obj.Email);
+                    command.Parameters.AddWithValue("@Foto", obj.Foto);
+                    command.Parameters.AddWithValue("@idUtilizador", key);
+
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        updated = true;
+                    }
                 }
             }
             return updated;

@@ -28,7 +28,7 @@ namespace JARVIS.Controllers
         }
 
         public IActionResult Pantry()
-        { 
+        {
 
             return View("Pantry");
         }

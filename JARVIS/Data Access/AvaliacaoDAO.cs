@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
+using JARVIS.Models;
 
 namespace JARVIS.DataAccess
 {
@@ -68,12 +69,12 @@ namespace JARVIS.DataAccess
             }
         }
 
-        public bool remove(Avaliacao obj)
+        public bool remove(string key)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Avaliacao obj)
+        public bool Update(string key, Avaliacao obj)
         {
             bool updated = false;
             using (SqlCommand command = _connection.Fetch().CreateCommand())

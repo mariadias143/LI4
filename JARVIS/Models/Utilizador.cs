@@ -1,17 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JARVIS.Models
 {
     public class Utilizador
     {
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public DateTime Data_nascimento { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string Foto { get; set; }
+        public Utilizador(int id, string nome, DateTime data, string username, string pass, string email, string foto, int admin)
+        {
+            idUtilizador = id;
+            Nome = nome;
+            DataNascimento = data;
+            Username = username;
+            Password = pass;
+            Email = email;
+            Foto = foto;
+            Admin = admin;
+        }
+
+        public Utilizador() { }
+
+        public int idUtilizador { get; set; }
+        public String Nome { get; set; }
+        public DateTime DataNascimento { get; set; }
+        public String Username { get; set; }
+        public String Password { get; set; }
+        public String Email { get; set; }
+        public String Foto { get; set; }
         public int Admin { get; set; }
         public virtual Historico Hist { get; set; }
         public virtual Despensa Despensa { get; set; }
@@ -20,10 +36,5 @@ namespace JARVIS.Models
         public virtual List<Alimento> Alergeneos { get; set; }
         public virtual List<Alimento> Preferencias { get; set; }
 
-
-        public class UserContext
-        {
-
-        }
     }
 }

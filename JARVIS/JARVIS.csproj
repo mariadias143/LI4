@@ -18,7 +18,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="Views\User\" />
-    <Folder Include="Shared\" />
     <Folder Include="Data Access\" />
   </ItemGroup>
   <ItemGroup>
@@ -36,6 +35,7 @@
     <Content Remove="Views\Shared\_Layout.cshtml" />
     <Content Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <Content Remove="Views\User\RegisterUser.cshtml" />
+    <Content Remove="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Home\Cookbook.cshtml" />
@@ -51,6 +51,5 @@
     <None Include="Views\Shared\_Error.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
-    <None Include="Views\User\RegisterUser.cshtml" />
   </ItemGroup>
 </Project>

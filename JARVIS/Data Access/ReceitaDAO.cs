@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
+using JARVIS.Models;
 
 namespace JARVIS.DataAccess
 {
@@ -14,7 +15,7 @@ namespace JARVIS.DataAccess
             _connection = connection;
         }
 
-        public Receita FindById (string key)
+        public Receita FindById(string key)
         {
 
             throw new NotImplementedException();
@@ -26,14 +27,12 @@ namespace JARVIS.DataAccess
             using (SqlCommand command = _connection.Fetch().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = "INSERT INTO Receita values (@idReceita,@Nome,@Descricao,@Duracao,@Classificacao,@Dificuldade)";
+                command.CommandText = "INSERT INTO Receita values (@idReceita,@Nome,@Descricao,@Duracao)";
 
                 command.Parameters.Add("@idReceita", SqlDbType.Int).Value = obj.idReceita;
                 command.Parameters.Add("@Nome", SqlDbType.Text).Value = obj.Nome;
                 command.Parameters.Add("@Descricao", SqlDbType.Text).Value = obj.Descricao;
-                command.Parameters.Add("@Duracao", SqlDbType.Int).Value = obj.Duracao;
-                command.Parameters.Add("@Classificacao", SqlDbType.Decimal).Value = obj.Classificacao;
-                command.Parameters.Add("@Dificuldade", SqlDbType.Text).Value = obj.Dificuldade;
+                command.Parameters.Add("@Duracao", SqlDbType.Time).Value = obj.Duracao;
 
                 command.ExecuteNonQuery();
                 // obj.Id = command.ExecuteScalar().ToString(); -> devolve o valor da primeira linha e primeira coluna da tabela em questão
@@ -49,7 +48,7 @@ namespace JARVIS.DataAccess
             using (SqlCommand command = _connection.Fetch().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = "SELECT idReceita, Nome, Descricao, Duracao, Classificacao, Dificuldade";
+                command.CommandText = "SELECT idReceita, Nome, Descricao, Duracao";
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                 {
@@ -63,9 +62,7 @@ namespace JARVIS.DataAccess
                             idReceita = int.Parse(row["idReceita"].ToString()),
                             Nome = row["Nome"].ToString(),
                             Descricao = row["Descricao"].ToString(),
-                            Duracao = int.Parse(row["Duracao"].ToString()),
-                            Classificacao = float.Parse(row["Classificacao"].ToString()),
-                            Dificuldade = row["Dificuldade"].ToString()
+                            Duracao = int.Parse(row["Duracao"].ToString())
                         };
                         receitas.Add(r);
                     }
@@ -74,12 +71,12 @@ namespace JARVIS.DataAccess
             }
         }
 
-        public bool remove(Receita obj)
+        public bool remove(string key)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Receita obj)
+        public bool Update(string key, Receita obj)
         {
             bool updated = false;
             using (SqlCommand command = _connection.Fetch().CreateCommand())
@@ -87,7 +84,7 @@ namespace JARVIS.DataAccess
                 command.CommandType = CommandType.Text;
                 command.CommandText = "UPDATE Receita Set Duracao==Duracao WHERE idReceita==idReceita";
 
-                command.Parameters.Add("@Duracao", SqlDbType.Int).Value = obj.Duracao;
+                command.Parameters.Add("@Duracao", SqlDbType.Decimal).Value = obj.Duracao;
                 command.Parameters.Add("@idReceita", SqlDbType.Int).Value = obj.idReceita;
 
                 if (command.ExecuteNonQuery() > 0)
