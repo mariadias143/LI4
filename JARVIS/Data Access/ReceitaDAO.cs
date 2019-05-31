@@ -87,7 +87,7 @@ namespace JARVIS.DataAccess
 
             using (SqlConnection con = _connection.Fetch())
             {
-                string queryString = "SELECT Alimento_idAlimento FROM Receita_Alimento WHERE idReceita = id";
+                string queryString = "SELECT Alimento_idAlimento FROM Receita_Alimento WHERE @idReceita = id";
                 string queryString2 = "SELECT * FROM Alimento where idAlimento = idAl";
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter())
