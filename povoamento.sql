@@ -3,34 +3,34 @@ USE JarvisDB
 INSERT INTO Utilizador 
 (idUtilizador, Nome, DataNascimento, Username, Password, Email, Foto, Admin)
 VALUES
-	(1,'Ana Silva', '1996-11-1','anaSilvaa','lala', 'as@gmail.com',null,0);
+	(1,'Ana Silva', '1996-11-01','anaSilvaa','lala', 'as@gmail.com',null,0);
 
 INSERT INTO Alergia
-(Utilizador_idUtilizador, Alimento_idAlimento)
+(idUtilizador, idAlimento)
 VALUES
 	(1,15),
 	(1,16);
 
 INSERT INTO Preferencia
-(Utilizador_idUtilizador, Alimento_idAlimento)
+(idUtilizador, idAlimento)
 VALUES
 	(1,9),
 	(1,17);
 
 INSERT INTO Alimento_Alternativo
-(Alimento_idAlimento, Alimento_idAlimentoAlt)
+(idAlimento, idAlimentoAlt)
 VALUES
 	(10,17),
 	(6,18);
 
 INSERT INTO Receita 
-(idReceita, Nome, Descricao, Duracao, Dificuldade, Classificacao)
+(idReceita, Nome, Descricao, Dificuldade, Classificacao, Duracao)
 VALUES
-	(1,'Massa fresca caseira','Receita tradicional de massa caseira',45,'Médio',3.8),
-	(2,'Tortellini com presunto e mozzarella','Tortellinis recheados com presunto, queijo mozzarella e tomate seco.',65,'Difícil',4.1);
+	(1,'Massa fresca caseira','Receita tradicional de massa caseira','Médio',3.8,45),
+	(2,'Tortellini com presunto e mozzarella','Tortellinis recheados com presunto, queijo mozzarella e tomate seco.','Difícil',4.1,65);
 
 INSERT INTO Instrução
-(idInstrução, Descrição, Ordem, Receita_idReceita)
+(idPasso, Descricao, Ordem, idReceita)
 VALUES
 	(1,'Coloque a farinha numa bancada ou tábua e faça um buraco no meio. Coloque os ovos, o sal e o azeite.',1,1),
 	(2,'Bata com a ajuda de um garfo sem desfazer as “paredes” de farinha.',2,1),
@@ -75,7 +75,7 @@ VALUES
 	(18,'Cebola',33,'2019-06-10');
 
 INSERT INTO Receita_Alimento
-(Receita_idReceita, Alimento_idAlimento, Quantidade)
+(idReceita, idAlimento, Quantidade)
 VALUES
 	(1,1,'300 gramas'), 
 	(1,2,'3 unidades'), 
@@ -95,7 +95,7 @@ VALUES
 	(2,14,'1 colher de sobremesa');
 
 INSERT INTO Despensa
-(Utilizador_idUtilizador, Alimento_idAlimento)
+(idUtilizador, idAlimento)
 VALUES
 	(1,17),
 	(1,9),
@@ -106,24 +106,24 @@ VALUES
 	(1,7);
 
 INSERT INTO Histórico
-(Utilizador_idUtilizador, Receita_idReceita)
+(idUtilizador, idReceita)
 VALUES
 	(1,1);
 
 INSERT INTO Avaliacao
-(idAvaliacao, Classificacao, Receita_idReceita, Utilizador_idUtilizador)
+(idAvaliacao, Classificacao, idReceita, idUtilizador)
 VALUES
 	(1,4,1,1);
 
 INSERT INTO Ementa
-(idEmenta, Data, Utilizador_idUtilizador)
+(idEmenta, Data, idUtilizador)
 VALUES
 	(1,'2019-05-30',1);
 
 INSERT INTO Ementa_Receita
-(Ementa_idEmenta, Receita_idReceita)
+(idEmenta, idReceita, Refeicao)
 VALUES
-	(1,2);
+	(1,2,2);
 
 INSERT INTO ListaCompras
 (Utilizador_idUtilizador, Alimento_idAlimento)
