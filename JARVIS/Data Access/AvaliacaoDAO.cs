@@ -29,7 +29,7 @@ namespace JARVIS.DataAccess
                 command.CommandText = "INSERT INTO Avaliacao values (@idAvaliacao,@Classificacao,@idReceita,@idUtilizador)";
 
                 command.Parameters.Add("@idAvaliacao", SqlDbType.Int).Value = obj.idAvaliacao;
-                command.Parameters.Add("@Classificacao", SqlDbType.Decimal).Value = obj.Classificacao;
+                command.Parameters.Add("@Classificacao", SqlDbType.Int).Value = obj.Classificacao;
                 command.Parameters.Add("@idReceita", SqlDbType.Int).Value = obj.idReceita;
                 command.Parameters.Add("@idUtilizador", SqlDbType.Int).Value = obj.idUtilizador;
 
@@ -58,7 +58,7 @@ namespace JARVIS.DataAccess
                         Avaliacao a = new Avaliacao
                         {
                             idAvaliacao = int.Parse(row["idAvaliacao"].ToString()),
-                            Classificacao = float.Parse(row["Classificacao"].ToString()),
+                            Classificacao = int.Parse(row["Classificacao"].ToString()),
                             idReceita = int.Parse(row["idReceita"].ToString()),
                             idUtilizador = int.Parse(row["idUtilizador"].ToString())
                         };
@@ -82,7 +82,7 @@ namespace JARVIS.DataAccess
                 command.CommandType = CommandType.Text;
                 command.CommandText = "UPDATE Avaliacao Set Classificacao==Classificacao WHERE idAvaliacao==idAvaliacao";
 
-                command.Parameters.Add("@Classificacao", SqlDbType.Decimal).Value = obj.Classificacao;
+                command.Parameters.Add("@Classificacao", SqlDbType.Int).Value = obj.Classificacao;
                 command.Parameters.Add("@idAvaliacao", SqlDbType.Int).Value = obj.idAvaliacao;
 
                 if (command.ExecuteNonQuery() > 0)

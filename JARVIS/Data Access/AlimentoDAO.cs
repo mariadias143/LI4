@@ -32,7 +32,7 @@ namespace JARVIS.DataAccess
                     {
                         a.idAlimento= int.Parse(row["idAlimento"].ToString());
                         a.Nome = row["Nome"].ToString();
-                        a.ValorNutricional = int.Parse(row["ValorNutricional"].ToString());
+                        a.ValorNutricional = double.Parse(row["ValorNutricional"].ToString());
                         a.Validade = DateTime.Parse(row["Validade"].ToString());           
                     }
                 }
@@ -51,7 +51,7 @@ namespace JARVIS.DataAccess
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
                     command.Parameters.Add("@Nome", SqlDbType.VarChar).Value = obj.Nome;
-                    command.Parameters.Add("@ValorNutricional", SqlDbType.Int).Value=obj.ValorNutricional;
+                    command.Parameters.Add("@ValorNutricional", SqlDbType.Decimal).Value=obj.ValorNutricional;
                     command.Parameters.Add("@Validade", SqlDbType.Date).Value=obj.Validade;
 
                     command.ExecuteNonQuery();
@@ -82,7 +82,7 @@ namespace JARVIS.DataAccess
                             {
                                 idAlimento = int.Parse(row["idAlimento"].ToString()),
                                 Nome = row["Nome"].ToString(),
-                                ValorNutricional = int.Parse(row["ValorNutricional"].ToString()),
+                                ValorNutricional = double.Parse(row["ValorNutricional"].ToString()),
                                 Validade = DateTime.Parse(row["Validade"].ToString())                              
                             };
                             alimentos.Add(a);

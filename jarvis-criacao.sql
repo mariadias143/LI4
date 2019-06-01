@@ -15,7 +15,7 @@ CREATE TABLE [Utilizador] (
   [Username] VARCHAR(45) NOT NULL,
   [Password] VARCHAR(45) NOT NULL,
   [Email] VARCHAR(45) NOT NULL,
-  [Foto] VARCHAR(45) NULL,
+  [Foto] VARCHAR(100) NULL,
   [Admin] TINYINT NULL)
 ;
 GO
@@ -34,8 +34,10 @@ GO
 CREATE TABLE [Receita] (
   [idReceita] INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
   [Nome] VARCHAR(45) NOT NULL,
-  [Descricao] VARCHAR(45) NULL,
-  [Duracao] TIME NOT NULL)
+  [Descricao] VARCHAR(150) NULL,
+  [Dificuldade] VARCHAR(20) NOT NULL,
+  [Classificacao] DECIMAL(5,2) NOT NULL,
+  [Duracao] INT NOT NULL)
 ;
 GO
 
@@ -115,7 +117,7 @@ CREATE TABLE [Alergia] (
 -- Table `mydb`.`Despensa`
 -- -----------------------------------------------------
 CREATE TABLE [Despensa] (
-  [Utilizador_idUtilizador] INTNOT NULL IDENTITY(1,1) PRIMARY KEY,
+  [Utilizador_idUtilizador] INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
   [Alimento_idAlimento] INT NOT NULL,
   CONSTRAINT [fk_Utilizador_has_Alimento_Utilizador2]
     FOREIGN KEY ([Utilizador_idUtilizador])
@@ -140,7 +142,7 @@ GO
 CREATE TABLE [Receita_Alimento] (
   [Receita_idReceita] INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
   [Alimento_idAlimento] INT NOT NULL,
-  [Quantidade] DECIMAL(5,2) NULL,
+  [Quantidade] VARCHAR(45) NOT NULL,
   CONSTRAINT [fk_Receita_has_Alimento_Receita1]
     FOREIGN KEY ([Receita_idReceita])
     REFERENCES [Receita] ([idReceita])
@@ -164,8 +166,8 @@ GO
 -- -----------------------------------------------------
 CREATE TABLE [Instrução] (
   [idInstrução] INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-  [Descrição] VARCHAR(45) NULL,
-  [Ordem] INT NULL,
+  [Descrição] VARCHAR(300) NOT NULL,
+  [Ordem] INT NOT NULL,
   [Receita_idReceita] INT NOT NULL,
   CONSTRAINT [fk_Instrução_Receita1]
     FOREIGN KEY ([Receita_idReceita])
@@ -222,6 +224,7 @@ GO
 CREATE TABLE [Ementa_Receita] (
   [Ementa_idEmenta] INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
   [Receita_idReceita] INT NOT NULL,
+  [Refeicao] INT NOT NULL
   CONSTRAINT [fk_Ementa_has_Receita_Ementa1]
     FOREIGN KEY ([Ementa_idEmenta])
     REFERENCES [Ementa] ([idEmenta])
@@ -237,4 +240,53 @@ GO
 CREATE INDEX [fk_Ementa_has_Receita_Receita1_idx] ON [Ementa_Receita] ([Receita_idReceita] ASC);
 GO
 CREATE INDEX [fk_Ementa_has_Receita_Ementa1_idx] ON [Ementa_Receita] ([Ementa_idEmenta] ASC);
+GO
+
+-- -----------------------------------------------------
+-- Table `mydb`.`ListaCompras`
+-- -----------------------------------------------------
+CREATE TABLE [ListaCompras] (
+  [Utilizador_idUtilizador] INT NOT NULL,
+  [Alimento_idAlimento] INT NOT NULL,
+  PRIMARY KEY ([Utilizador_idUtilizador], [Alimento_idAlimento]),
+  CONSTRAINT [fk_Utilizador_has_Alimento_Utilizador3]
+    FOREIGN KEY ([Utilizador_idUtilizador])
+    REFERENCES [Utilizador] ([idUtilizador])
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT [fk_Utilizador_has_Alimento_Alimento5]
+    FOREIGN KEY ([Alimento_idAlimento])
+    REFERENCES [Alimento] ([idAlimento])
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+;
+GO
+CREATE INDEX [fk_Utilizador_has_Alimento_Alimento5_idx] ON [ListaCompras] ([Alimento_idAlimento] ASC);
+GO
+CREATE INDEX [fk_Utilizador_has_Alimento_Utilizador3_idx] ON [ListaCompras] ([Utilizador_idUtilizador] ASC);
+GO
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Alimento_Alternativo`
+-- -----------------------------------------------------
+CREATE TABLE [Alimento_Alternativo] (
+  [Alimento_idAlimento] INT NOT NULL,
+  [Alimento_idAlimentoAlt] INT NOT NULL,
+  PRIMARY KEY ([Alimento_idAlimento], [Alimento_idAlimentoAlt]),
+  CONSTRAINT [fk_Utilizador_has_Alimento_Alimento6]
+    FOREIGN KEY ([Alimento_idAlimento])
+    REFERENCES [Alimento] ([idAlimento])
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT [fk_Utilizador_has_Alimento_Alimento7]
+    FOREIGN KEY ([Alimento_idAlimentoAlt])
+    REFERENCES [Alimento] ([idAlimento])
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+;
+GO
+CREATE INDEX [fk_Utilizador_has_Alimento_Alimento6_idx] ON [Alimento_Alternativo] ([Alimento_idAlimento] ASC);
+GO
+CREATE INDEX [fk_Utilizador_has_Alimento_Alimento7_idx] ON [Alimento_Alternativo] ([Alimento_idAlimento] ASC);
 GO

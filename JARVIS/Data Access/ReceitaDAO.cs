@@ -29,14 +29,15 @@ namespace JARVIS.DataAccess
         {
             using (SqlConnection con = _connection.Fetch())
             {
-                String query = "INSERT INTO dbo.Utilizador(Nome,Descricao,Duracao) values (@Nome,@Descricao,@Duracao)";
+                String query = "INSERT INTO dbo.Utilizador(Nome,Descricao,Dificuldade,Classificacao,Duracao) values (@Nome,@Descricao,@Dificuldade,@Classificacao,@Duracao)";
 
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
                     command.Parameters.Add("@Nome", SqlDbType.VarChar).Value = obj.Nome ?? (object)DBNull.Value;
-                    command.Parameters.Add("@Descricao", SqlDbType.Date).Value = obj.Descricao;
-                    command.Parameters.Add("@Duracao", SqlDbType.VarChar).Value = obj.Duracao;
-
+                    command.Parameters.Add("@Descricao", SqlDbType.VarChar).Value = obj.Descricao;
+                    command.Parameters.Add("@Duracao", SqlDbType.Int).Value = obj.Duracao;
+                    command.Parameters.Add("@Dificuldade", SqlDbType.VarChar).Value = obj.Dificuldade;
+                    command.Parameters.Add("@Classificacao", SqlDbType.Decimal).Value = obj.Classificacao;
                     command.ExecuteNonQuery();
 
                 }
@@ -66,7 +67,9 @@ namespace JARVIS.DataAccess
                                 idReceita = int.Parse(row["idReceita"].ToString()),
                                 Nome = row["Nome"].ToString(),
                                 Descricao = row["Descricao"].ToString(),
-                                Duracao = int.Parse(row["Duracao"].ToString())
+                                Duracao = int.Parse(row["Duracao"].ToString()),
+                                Dificuldade = row["Dificuldade"].ToString(),
+                                Classificacao = float.Parse(row["Classificacao"].ToString())
                             };
                             receitas.Add(a);
                         }
@@ -146,7 +149,7 @@ namespace JARVIS.DataAccess
             bool updated = false;
             using (SqlConnection con = _connection.Fetch())
             {
-                String query = "UPDATE dbo.Receita SET Nome=@Nome, Descricao=@Descricao, Duracao=@Duracao WHERE idUtilizador=@idUtilizador ";
+                String query = "UPDATE dbo.Receita SET Nome=@Nome, Descricao=@Descricao, Dificuldade=@Dificuldade, Classificacao=@Classificacao, Duracao=@Duracao WHERE idUtilizador=@idUtilizador ";
 
 
                 using (SqlCommand command = new SqlCommand(query, con))
@@ -154,6 +157,8 @@ namespace JARVIS.DataAccess
                     command.Parameters.AddWithValue("@Nome", obj.Nome);
                     command.Parameters.AddWithValue("@Descricao", obj.Descricao);
                     command.Parameters.AddWithValue("@Duracao", obj.Duracao);
+                    command.Parameters.AddWithValue("@Dificuldade", obj.Dificuldade);
+                    command.Parameters.AddWithValue("@Classificacao", obj.Classificacao);
 
                     if (command.ExecuteNonQuery() > 0)
                     {
