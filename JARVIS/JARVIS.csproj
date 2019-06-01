@@ -19,6 +19,7 @@
     <Folder Include="Views\Shared\" />
     <Folder Include="Views\User\" />
     <Folder Include="Data Access\" />
+    <Folder Include="Views\Recipe\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Home\Cookbook.cshtml" />

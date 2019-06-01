@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace JARVIS.Models
 {
@@ -13,9 +14,15 @@ namespace JARVIS.Models
             Duracao = duracao;
             Classificacao = classificacao;
             Dificuldade = dificuldade;
+            SelectedFoods = new List<string>();
+            AvailableFoods = new List<SelectListItem>();
         }
 
-        public Receita() { }
+        public Receita()
+        {
+            SelectedFoods = new List<string>();
+            AvailableFoods = new List<SelectListItem>();
+        }
 
         public int idReceita { get; set; }
         public string Descricao { get; set; }
@@ -25,5 +32,9 @@ namespace JARVIS.Models
         public string Dificuldade { get; set; }
         public virtual List<Passo> Passos { get; set; }
         public float Classificacao { get; set; }
+        public IList<string> SelectedFoods { get; set; }
+        public IList<SelectListItem> AvailableFoods { get; set; }
+
+        public void executaReceita(List<Alimento> l) { }
     }
 }

@@ -20,5 +20,14 @@ namespace JARVIS.Models
         public double ValorNutricional { get; set; }
         public DateTime Validade { get; set; }
 
+        public bool temAlternativa()
+        {
+            return true; //definir
+        }
+
+        public Alimento alternativa()
+        {
+            return new Alimento(); //definir
+        }
     }
 }
