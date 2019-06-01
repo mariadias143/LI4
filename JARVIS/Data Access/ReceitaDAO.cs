@@ -17,8 +17,30 @@ namespace JARVIS.DataAccess
 
         public Receita FindById(string key)
         {
+            Receita r = new Receita();
+            using (SqlConnection con = _connection.Fetch())
+            {
+                string query = "SELECT * FROM Receita where idReceita=@idReceita";
+                var dt = new DataTable();
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@idReceita", key);
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
 
-            throw new NotImplementedException();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        r.idReceita = int.Parse(row["idReceita"].ToString());
+                        r.Nome = row["Nome"].ToString();
+                        r.Descricao = row["Descricao"].ToString();
+                        r.Classificacao = float.Parse(row["Classificacao"].ToString());
+                        r.Dificuldade = row["Dificuldade"].ToString();
+                        r.Duracao = int.Parse(row["Duracao"].ToString());
+                    }
+                }
+            }
+            return r;
         }
 
 
@@ -29,7 +51,7 @@ namespace JARVIS.DataAccess
         {
             using (SqlConnection con = _connection.Fetch())
             {
-                String query = "INSERT INTO dbo.Utilizador(Nome,Descricao,Dificuldade,Classificacao,Duracao) values (@Nome,@Descricao,@Dificuldade,@Classificacao,@Duracao)";
+                String query = "INSERT INTO dbo.Receita(Nome,Descricao,Dificuldade,Classificacao,Duracao) values (@Nome,@Descricao,@Dificuldade,@Classificacao,@Duracao)";
 
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
@@ -38,6 +60,7 @@ namespace JARVIS.DataAccess
                     command.Parameters.Add("@Duracao", SqlDbType.Int).Value = obj.Duracao;
                     command.Parameters.Add("@Dificuldade", SqlDbType.VarChar).Value = obj.Dificuldade;
                     command.Parameters.Add("@Classificacao", SqlDbType.Decimal).Value = obj.Classificacao;
+
                     command.ExecuteNonQuery();
 
                 }
@@ -67,9 +90,9 @@ namespace JARVIS.DataAccess
                                 idReceita = int.Parse(row["idReceita"].ToString()),
                                 Nome = row["Nome"].ToString(),
                                 Descricao = row["Descricao"].ToString(),
-                                Duracao = int.Parse(row["Duracao"].ToString()),
                                 Dificuldade = row["Dificuldade"].ToString(),
-                                Classificacao = float.Parse(row["Classificacao"].ToString())
+                                Classificacao = float.Parse(row["Classificacao"].ToString()),
+                                Duracao = int.Parse(row["Duracao"].ToString())
                             };
                             receitas.Add(a);
                         }
@@ -139,7 +162,21 @@ namespace JARVIS.DataAccess
 
         public bool remove(string key)
         {
-            throw new NotImplementedException();
+            bool removed = false;
+            using (SqlConnection con = _connection.Fetch())
+            {
+                String query = "DELETE FROM dbo.Receita where idReceita=@idReceita";
+
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@idReceita", key);
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        removed = true;
+                    }
+                }
+            }
+            return removed;
         }
 
 
@@ -149,16 +186,16 @@ namespace JARVIS.DataAccess
             bool updated = false;
             using (SqlConnection con = _connection.Fetch())
             {
-                String query = "UPDATE dbo.Receita SET Nome=@Nome, Descricao=@Descricao, Dificuldade=@Dificuldade, Classificacao=@Classificacao, Duracao=@Duracao WHERE idUtilizador=@idUtilizador ";
+                String query = "UPDATE dbo.Receita SET Nome=@Nome, Descricao=@Descricao, Dificuldade=@Dificuldade, Classificacao=@Classificacao, Duracao=@Duracao WHERE idReceita=@idReceita";
 
 
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
                     command.Parameters.AddWithValue("@Nome", obj.Nome);
                     command.Parameters.AddWithValue("@Descricao", obj.Descricao);
-                    command.Parameters.AddWithValue("@Duracao", obj.Duracao);
                     command.Parameters.AddWithValue("@Dificuldade", obj.Dificuldade);
                     command.Parameters.AddWithValue("@Classificacao", obj.Classificacao);
+                    command.Parameters.AddWithValue("@Duracao", obj.Duracao);
 
                     if (command.ExecuteNonQuery() > 0)
                     {
