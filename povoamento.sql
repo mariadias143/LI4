@@ -125,6 +125,7 @@ INSERT INTO Ementa_Receita
 VALUES
 	(1,2,2);
 
+
 INSERT INTO ListaCompras
 (Utilizador_idUtilizador, Alimento_idAlimento)
 VALUES
