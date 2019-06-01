@@ -72,7 +72,7 @@ namespace JARVIS.DataAccess
 
         public Collection<Utilizador> ListAll()
         {
-            Collection<Utilizador> alimentos = new Collection<Utilizador>();
+            Collection<Utilizador> utilizadores = new Collection<Utilizador>();
             using (SqlConnection con = _connection.Fetch())
             {
                 string queryString = "SELECT * FROM Utilizador";
@@ -98,11 +98,11 @@ namespace JARVIS.DataAccess
                                 Foto = row["Foto"].ToString(),
                                 Admin = int.Parse(row["Admin"].ToString())
                             };
-                            alimentos.Add(a);
+                            utilizadores.Add(a);
                         }
                     }
                 }
-                return alimentos;
+                return utilizadores;
             }
         }
 
