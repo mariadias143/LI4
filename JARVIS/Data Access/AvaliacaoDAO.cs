@@ -17,25 +17,45 @@ namespace JARVIS.DataAccess
 
         public Avaliacao FindById(string key)
         {
-            throw new NotImplementedException();
+            Avaliacao a = new Avaliacao();
+            using (SqlConnection con = _connection.Fetch())
+            {
+                string query = "SELECT * FROM Avaliacao where idAvaliacao=@idAvaliacao";
+                var dt = new DataTable();
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@idAvaliacao", key);
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        a.idAvaliacao = int.Parse(row["idAvaliacao"].ToString());
+                        a.Classificacao = int.Parse(row["Classificacao"].ToString());
+                        a.idReceita = int.Parse(row["idReceita"].ToString());
+                        a.idUtilizador = int.Parse(row["idUtilizador"].ToString());
+                    }
+                }
+            }
+            return a;
         }
 
         public Avaliacao Insert(Avaliacao obj)
         {
-            //SqCommand command ...
-            using (SqlCommand command = _connection.Fetch().CreateCommand())
+            using (SqlConnection con = _connection.Fetch())
             {
-                command.CommandType = CommandType.Text;
-                command.CommandText = "INSERT INTO Avaliacao values (@idAvaliacao,@Classificacao,@idReceita,@idUtilizador)";
+                String query = "INSERT INTO dbo.Avaliacao(Classificacao,IdReceita,IdUtilizador) values (@Classificacao,@IdReceita,@IdUtilizador)";
 
-                command.Parameters.Add("@idAvaliacao", SqlDbType.Int).Value = obj.idAvaliacao;
-                command.Parameters.Add("@Classificacao", SqlDbType.Int).Value = obj.Classificacao;
-                command.Parameters.Add("@idReceita", SqlDbType.Int).Value = obj.idReceita;
-                command.Parameters.Add("@idUtilizador", SqlDbType.Int).Value = obj.idUtilizador;
+                using (SqlCommand command = _connection.Fetch().CreateCommand())
+                {
 
-                command.ExecuteNonQuery();
-                // obj.Id = command.ExecuteScalar().ToString(); -> devolve o valor da primeira linha e primeira coluna da tabela em questão
-                //
+                    command.Parameters.Add("@Classificacao", SqlDbType.Int).Value = obj.Classificacao;
+                    command.Parameters.Add("@idReceita", SqlDbType.Int).Value = obj.idReceita;
+                    command.Parameters.Add("@idUtilizador", SqlDbType.Int).Value = obj.idUtilizador;
+
+                    command.ExecuteNonQuery();
+                }
             }
             return obj;
         }
@@ -43,56 +63,75 @@ namespace JARVIS.DataAccess
         public Collection<Avaliacao> ListAll()
         {
             Collection<Avaliacao> avaliacoes = new Collection<Avaliacao>();
-            using (SqlCommand command = _connection.Fetch().CreateCommand())
+            using (SqlConnection con = _connection.Fetch())
             {
-                command.CommandType = CommandType.Text;
-                command.CommandText = "SELECT idAvaliacao, Classificacao, idReceita, idUtilizador";
+                string queryString = "SELECT * FROM Avaliacao";
 
-                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
-                    DataTable tab = new DataTable();
+                    adapter.SelectCommand = new SqlCommand(queryString, con);
+                    DataSet tab = new DataSet();
                     adapter.Fill(tab);
 
-                    foreach (DataRow row in tab.Rows)
+                    foreach (DataTable table in tab.Tables)
                     {
-                        Avaliacao a = new Avaliacao
-                        {
-                            idAvaliacao = int.Parse(row["idAvaliacao"].ToString()),
-                            Classificacao = int.Parse(row["Classificacao"].ToString()),
-                            idReceita = int.Parse(row["idReceita"].ToString()),
-                            idUtilizador = int.Parse(row["idUtilizador"].ToString())
-                        };
-                        avaliacoes.Add(a);
+                        foreach (DataRow row in table.Rows)
+                        { 
+                           Avaliacao a = new Avaliacao
+                           {
+                               Classificacao = int.Parse(row["Classificacao"].ToString()),
+                               idReceita = int.Parse(row["idReceita"].ToString()),
+                               idUtilizador = int.Parse(row["idUtilizador"].ToString())
+                           };
+                           avaliacoes.Add(a);
                     }
                 }
-                return avaliacoes;
             }
+            return avaliacoes;
         }
+    }
 
         public bool remove(string key)
         {
-            throw new NotImplementedException();
+            bool removed = false;
+            using (SqlConnection con = _connection.Fetch())
+            {
+                String query = "DELETE FROM dbo.Avaliacao where idAvaliacao=@idAvaliacao";
+
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@idAvaliacao", key);
+                    if(command.ExecuteNonQuery() > 0)
+                    {
+                        removed = true;
+                    }
+                }
+            }
+            return removed;
         }
 
         public bool Update(string key, Avaliacao obj)
         {
             bool updated = false;
-            using (SqlCommand command = _connection.Fetch().CreateCommand())
+            using (SqlConnection con = _connection.Fetch())
             {
-                command.CommandType = CommandType.Text;
-                command.CommandText = "UPDATE Avaliacao Set Classificacao==Classificacao WHERE idAvaliacao==idAvaliacao";
+                String query = "UPDATE dbo.Utilizador SET Classificacao=@Classificacao, idReceita=@idReceita, idUtilizador=@idUtilizador WHERE idAvaliacao=@idAvaliacao";
 
-                command.Parameters.Add("@Classificacao", SqlDbType.Int).Value = obj.Classificacao;
-                command.Parameters.Add("@idAvaliacao", SqlDbType.Int).Value = obj.idAvaliacao;
-
-                if (command.ExecuteNonQuery() > 0)
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
-                    updated = true;
-                }
+                    command.Parameters.AddWithValue("@Classificacao", obj.Classificacao);
+                    command.Parameters.AddWithValue("@idReceita", obj.idReceita);
+                    command.Parameters.AddWithValue("@idUtilizador", obj.idUtilizador);
+                    command.Parameters.AddWithValue("@idAvaliacao", key);
+
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        updated = true;
+                    }
+                }                
+
             }
             return updated;
         }
-
-
     }
 }
