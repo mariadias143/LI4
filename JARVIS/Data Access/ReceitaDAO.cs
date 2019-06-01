@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using JARVIS.Models;
+using System.Collections.Generic;
 
 namespace JARVIS.DataAccess
 {
@@ -105,16 +106,14 @@ namespace JARVIS.DataAccess
 
 
 
-        //PARA JÁ VOU SELECIONAR TODA A TABELA DE UM ALIMENTO E FAZER COM ROWS DEPOIS TENHO DE ALTERAR
-        public Collection<Alimento> ListaAlimento(int id) 
+
+        public Collection<Alimento> ListaAlimentos(int id)
         {
             Collection<Alimento> alimentos = new Collection<Alimento>();
-            int idAl;
 
             using (SqlConnection con = _connection.Fetch())
             {
-                string queryString = "SELECT Alimento_idAlimento FROM Receita_Alimento WHERE @idReceita = id";
-                string queryString2 = "SELECT * FROM Alimento where idAlimento = idAl";
+                string queryString = " SELECT* FROM Alimento AS A INNER JOIN Receita_Alimento AS RA ON RA.idAlimento = A.idAlimento WHERE RA.idReceita = id";
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
@@ -125,34 +124,52 @@ namespace JARVIS.DataAccess
                     {
                         foreach (DataRow row in table.Rows)
                         {
-                            idAl = int.Parse(row["idAlimento"].ToString());
-                            using (SqlDataAdapter adapter2 = new SqlDataAdapter())
+                            Alimento a = new Alimento
                             {
-                                adapter2.SelectCommand = new SqlCommand(queryString2, con);
-                                DataSet tab2 = new DataSet();
-                                adapter.Fill(tab2);
-
-                                foreach (DataTable table2 in tab2.Tables)
-                                {
-                                    foreach (DataRow row2 in table2.Rows)
-                                    {
-                                        Alimento a = new Alimento
-                                        {
-                                            idAlimento = int.Parse(row["idAlimento"].ToString()),
-                                            Nome = row["Nome"].ToString(),
-                                            ValorNutricional = double.Parse(row["ValorNutricional"].ToString()),
-                                            Validade = DateTime.Parse(row["Validade"].ToString())
-
-                                        };
-                                        alimentos.Add(a);
-                                    }
-                                }
-                            }
+                                idAlimento = int.Parse(row["idAlimento"].ToString()),
+                                Nome = row["Nome"].ToString(),
+                                ValorNutricional = double.Parse(row["ValorNutricional"].ToString()),
+                                Validade = DateTime.Parse(row["Validade"].ToString())
+                            };
+                            alimentos.Add(a);
                         }
                     }
                 }
             }
             return alimentos;
+        }
+
+        public SortedList<int, Passo> ListaPassosOrdenados(int id)
+        {
+            SortedList<int, Passo> ret = new SortedList<int, Passo>();
+
+            using (SqlConnection con = _connection.Fetch())
+            {
+                string queryString = "SELECT * FROM Instrução WHERE idReceita = id";
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter())
+                {
+                    adapter.SelectCommand = new SqlCommand(queryString, con);
+                    DataSet tab = new DataSet();
+                    adapter.Fill(tab);
+                    foreach (DataTable table in tab.Tables)
+                    {
+                        foreach (DataRow row in table.Rows)
+                        {
+                            int ordem = int.Parse(row["Ordem"].ToString());
+                            Passo p = new Passo
+                            {
+                                idPasso = int.Parse(row["idPasso"].ToString()),
+                                idReceita = int.Parse(row["idReceita"].ToString()),
+                                Descricao = row["Descricao"].ToString(),
+                                Ordem = ordem
+                            };
+                            ret.Add(ordem, p);
+                        }
+                    }
+                }
+            }
+            return ret;
         }
 
 
