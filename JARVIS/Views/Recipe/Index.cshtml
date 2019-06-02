@@ -4,40 +4,12 @@
     @Html.ActionLink("Create New", "Register")
 </p>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idReceita)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ingredientes.Count)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
+@foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.idReceita)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ingredientes.Count)
-        </td>
-    </tr>
-
+        <li><h3>@item.Nome</h3></li>
+        @foreach (var x in item.Ingredientes){
+            <li>@x.Nome</li>
         }
 
-</table>
+    }

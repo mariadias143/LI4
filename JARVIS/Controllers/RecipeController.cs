@@ -22,8 +22,10 @@ namespace JARVIS.Controllers
 
             IDAO<Receita> rDAO = new ReceitaDAO(connection);
 
+            Collection<Receita> rs = rDAO.ListAll();
             ModelState.Clear();
-            return View(rDAO.ListAll());
+            
+            return View(rs);
         }
         /*
         public ActionResult Index(int idReceita)

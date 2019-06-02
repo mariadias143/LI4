@@ -10,7 +10,7 @@ namespace JARVIS.DataAccess
 
         public Connection()
         {
-            _connection = new SqlConnection("Data Source=grupo36.database.windows.net; Initial Catalog=JarvisDB;MultipleActiveResultSets=True;" + "User ID=grupo36; Password = reallyStrongPwd123");
+            _connection = new SqlConnection("Data Source=grupo36.database.windows.net; Initial Catalog=JarvisDB;" + "User ID=grupo36; Password = reallyStrongPwd123");
         }
 
         public void close()

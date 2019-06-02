@@ -40,10 +40,8 @@ namespace JARVIS.DataAccess
                         r.Duracao = int.Parse(row["Duracao"].ToString());
                     }
                 }
-                List<Alimento> alimentos = ListaAlimentos(1);
+                List<Alimento> alimentos = ListaAlimentos(con, Convert.ToInt32(key));
                 r.Ingredientes = alimentos;
-                string message = r.Ingredientes[0].Nome; // or using e.InnerException.Message
-                Console.WriteLine("LALALA " + message);
             }
             return r;
         }
@@ -75,7 +73,8 @@ namespace JARVIS.DataAccess
 
         public Collection<Receita> ListAll()
         {
-            Collection<Receita> receitas = new Collection<Receita>();
+            int id;
+            Collection <Receita> receitas = new Collection<Receita>();
             using (SqlConnection con = _connection.Fetch())
             {
                 string queryString = "SELECT * FROM Receita";
@@ -99,21 +98,23 @@ namespace JARVIS.DataAccess
                                 Classificacao = float.Parse(row["Classificacao"].ToString()),
                                 Duracao = int.Parse(row["Duracao"].ToString())
                             };
+                            id = int.Parse(row["idReceita"].ToString());
+                            List<Alimento> alimentos = ListaAlimentos(con,id);
+                            a.Ingredientes = alimentos;
                             receitas.Add(a);
                         }
                     }
                 }
-                return receitas;
             }
+            return receitas;
         }
 
 
 
-        public List<Alimento> ListaAlimentos(int id)
+        public List<Alimento> ListaAlimentos(SqlConnection con, int id)
         {
             List<Alimento> alimentos = new List<Alimento>();
-            using (SqlConnection con = _connection.Fetch())
-            {
+
                 string query = "SELECT idAlimento FROM Receita_Alimento WHERE idReceita =@id";
 
                 using (SqlCommand command = new SqlCommand(query, con))
@@ -163,16 +164,7 @@ namespace JARVIS.DataAccess
                         }
                     }
                 }
-                alimentos.Add(new Alimento
-                {
-                    idAlimento = 3,
-                    Nome = "batata",
-                    ValorNutricional = 3.4,
-                    Validade = DateTime.Now
-
-                });
-                return alimentos;
-            }
+            return alimentos;
         }
 
 
