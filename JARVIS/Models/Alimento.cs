@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Mvc.Html;
 
 namespace JARVIS.Models
 {
@@ -19,6 +20,14 @@ namespace JARVIS.Models
         public String Nome { get; set; }
         public double ValorNutricional { get; set; }
         public DateTime Validade { get; set; }
+        public bool IsChecked { get; set; }
+
+
+        public bool Indispensavel()
+        {
+            return false; //definir
+        }
+
 
         public bool temAlternativa()
         {
@@ -29,5 +38,12 @@ namespace JARVIS.Models
         {
             return new Alimento(); //definir
         }
+
+
+        public class ListaAlimentos
+        {
+            public List<Alimento> Alimentos { get; set; }
+        }
     }
+
 }

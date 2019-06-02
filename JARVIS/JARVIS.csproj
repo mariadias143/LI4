@@ -12,6 +12,7 @@
     <PackageReference Include="bootstrap" Version="4.3.1" />
     <PackageReference Include="EntityFramework" Version="6.2.0" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.110" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +38,9 @@
     <Content Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <Content Remove="Views\User\RegisterUser.cshtml" />
     <Content Remove="Views\User\Register.cshtml" />
+    <Content Remove="Views\Recipe\PreReceita.cshtml" />
+    <Content Remove="Views\Recipe\Success.cshtml" />
+    <Content Remove="Views\Recipe\Alternativa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Home\Cookbook.cshtml" />
@@ -52,5 +56,8 @@
     <None Include="Views\Shared\_Error.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\Recipe\PreReceita.cshtml" />
+    <None Include="Views\Recipe\Success.cshtml" />
+    <None Include="Views\Recipe\Alternativa.cshtml" />
   </ItemGroup>
 </Project>

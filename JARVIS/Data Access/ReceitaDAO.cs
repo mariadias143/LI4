@@ -40,6 +40,10 @@ namespace JARVIS.DataAccess
                         r.Duracao = int.Parse(row["Duracao"].ToString());
                     }
                 }
+                List<Alimento> alimentos = ListaAlimentos(1);
+                r.Ingredientes = alimentos;
+                string message = r.Ingredientes[0].Nome; // or using e.InnerException.Message
+                Console.WriteLine("LALALA " + message);
             }
             return r;
         }
@@ -105,39 +109,74 @@ namespace JARVIS.DataAccess
 
 
 
-
-
-        public Collection<Alimento> ListaAlimentos(int id)
+        public List<Alimento> ListaAlimentos(int id)
         {
-            Collection<Alimento> alimentos = new Collection<Alimento>();
-
+            List<Alimento> alimentos = new List<Alimento>();
             using (SqlConnection con = _connection.Fetch())
             {
-                string queryString = " SELECT* FROM Alimento AS A INNER JOIN Receita_Alimento AS RA ON RA.idAlimento = A.idAlimento WHERE RA.idReceita = id";
+                string query = "SELECT idAlimento FROM Receita_Alimento WHERE idReceita =@id";
 
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
-                    adapter.SelectCommand = new SqlCommand(queryString, con);
-                    DataSet tab = new DataSet();
-                    adapter.Fill(tab);
-                    foreach (DataTable table in tab.Tables)
+                    command.Parameters.AddWithValue("@id", id);
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter())
                     {
-                        foreach (DataRow row in table.Rows)
+                        adapter.SelectCommand = command;
+                        DataSet tab = new DataSet();
+                        adapter.Fill(tab);
+
+                        foreach (DataTable table in tab.Tables)
                         {
-                            Alimento a = new Alimento
+                            foreach (DataRow row in table.Rows)
                             {
-                                idAlimento = int.Parse(row["idAlimento"].ToString()),
-                                Nome = row["Nome"].ToString(),
-                                ValorNutricional = double.Parse(row["ValorNutricional"].ToString()),
-                                Validade = DateTime.Parse(row["Validade"].ToString())
-                            };
-                            alimentos.Add(a);
+                                string alimento = row["idAlimento"].ToString();
+                                string query2 = "SELECT * FROM Alimento where idAlimento = @idAl";
+                                using (SqlCommand command2 = new SqlCommand(query2, con))
+                                {
+                                    command2.Parameters.AddWithValue("@idAl", alimento);
+                                    using (SqlDataAdapter adapter2 = new SqlDataAdapter())
+                                    {
+                                        adapter2.SelectCommand = command2;
+                                        DataSet tab2 = new DataSet();
+                                        adapter2.Fill(tab2);
+
+                                        foreach (DataTable table2 in tab2.Tables)
+                                        {
+                                            foreach (DataRow row2 in table2.Rows)
+                                            {
+                                                Alimento a = new Alimento
+                                                {
+                                                    idAlimento = int.Parse(row2["idAlimento"].ToString()),
+                                                    Nome = row2["Nome"].ToString(),
+                                                    ValorNutricional = double.Parse(row2["ValorNutricional"].ToString()),
+                                                    Validade = DateTime.Parse(row2["Validade"].ToString())
+
+                                                };
+                                                alimentos.Add(a);
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
                         }
                     }
                 }
+                alimentos.Add(new Alimento
+                {
+                    idAlimento = 3,
+                    Nome = "batata",
+                    ValorNutricional = 3.4,
+                    Validade = DateTime.Now
+
+                });
+                return alimentos;
             }
-            return alimentos;
         }
+
+
+
 
         public SortedList<int, Passo> ListaPassosOrdenados(int id)
         {

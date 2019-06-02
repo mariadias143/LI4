@@ -6,9 +6,9 @@ namespace JARVIS.Models
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
     public class Receita
     {
-        public Receita(int id, string nome, string descricao, int duracao, float classificacao, string dificuldade)
+        public Receita(int idu, string nome, string descricao, int duracao, float classificacao, string dificuldade)
         {
-            idReceita = id;
+            idReceita = idu;
             Nome = nome;
             Descricao = descricao;
             Duracao = duracao;
@@ -27,7 +27,7 @@ namespace JARVIS.Models
         public int idReceita { get; set; }
         public string Descricao { get; set; }
         public string Nome { get; set; }
-        public virtual List<Alimento> Ingredientes { get; set; }
+        public virtual List<Alimento> Ingredientes { get; set; } = new List<Alimento>();
         public int Duracao { get; set; }
         public string Dificuldade { get; set; }
         public virtual List<Passo> Passos { get; set; }
