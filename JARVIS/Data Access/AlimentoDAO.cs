@@ -15,8 +15,13 @@ namespace JARVIS.DataAccess
             _connection = connection;
         }
 
+<<<<<<< HEAD
         public Alimento FindById(int key)
         {
+=======
+        public Alimento FindById(int key)
+        {
+>>>>>>> 726f6e1fed68bbf5c36d05b3e60e13b394906930
             Alimento a = new Alimento();
             using (SqlConnection con = _connection.Fetch())
             {
@@ -34,7 +39,11 @@ namespace JARVIS.DataAccess
                         a.idAlimento = int.Parse(row["idAlimento"].ToString());
                         a.Nome = row["Nome"].ToString();
                         a.ValorNutricional = double.Parse(row["ValorNutricional"].ToString());
+<<<<<<< HEAD
                         a.Validade = DateTime.Parse(row["Validade"].ToString());
+=======
+                        a.Validade = DateTime.Parse(row["Validade"].ToString());
+>>>>>>> 726f6e1fed68bbf5c36d05b3e60e13b394906930
                     }
                 }
             }
@@ -54,6 +63,7 @@ namespace JARVIS.DataAccess
                     SqlDataReader reader = command.ExecuteReader();
                     dt.Load(reader);
                     reader.Close();
+<<<<<<< HEAD
 
                     foreach (DataRow row in dt.Rows)
                     {
@@ -79,6 +89,33 @@ namespace JARVIS.DataAccess
                     }
                 }
 
+=======
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        a.idAlimento = int.Parse(row["idAlimento"].ToString());
+                        a.Nome = row["Nome"].ToString();
+                        a.ValorNutricional = double.Parse(row["ValorNutricional"].ToString());
+                        a.Validade = DateTime.Parse(row["Validade"].ToString());
+                    }
+                }
+
+                query = "SELECT * FROM Alimento_Alternativo where idAlimento=@id";
+                dt = new DataTable();
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@id", a.idAlimento);
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        a.alternativo = int.Parse(row["idAlimentoAlt"].ToString());
+                    }
+                }
+
+>>>>>>> 726f6e1fed68bbf5c36d05b3e60e13b394906930
             }
             return a;
         }
@@ -124,7 +161,11 @@ namespace JARVIS.DataAccess
                                 idAlimento = int.Parse(row["idAlimento"].ToString()),
                                 Nome = row["Nome"].ToString(),
                                 ValorNutricional = double.Parse(row["ValorNutricional"].ToString()),
+<<<<<<< HEAD
                                 Validade = DateTime.Parse(row["Validade"].ToString())
+=======
+                                Validade = DateTime.Parse(row["Validade"].ToString())
+>>>>>>> 726f6e1fed68bbf5c36d05b3e60e13b394906930
                             };
 
                             queryString = "SELECT * FROM Alimento_Alternativo where idAlimento=@id";
