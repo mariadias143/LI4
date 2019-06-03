@@ -30,7 +30,7 @@ namespace JARVIS.Controllers
         {
             return View();
         }
-
+        //POST: User/Create
         [HttpPost]
         public ActionResult Register(Utilizador smodel)
         {
@@ -58,9 +58,56 @@ namespace JARVIS.Controllers
             return View();
         }
 
+        //3. ************ LOGIN ********************
+        //GET: User/Login
+        public ActionResult Login() {
+            return View();
+        }
+        //POST
+        [HttpPost]
+        public ActionResult Login(string email, string password) {
+
+            IConnection connection = new Connection();
+            connection.Fetch();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    IDAO<Utilizador> uDAO = new UtilizadorDAO(connection);
+
+                    Utilizador u = uDAO.FindByEmail(email);
+
+                    if (u != null)
+                    {
+                        if (u.Password.Equals(password))
+                        {
+                            return RedirectToAction("AddFavs");
+                        }
+                        else
+                        {
+                            return View("~/Home/Cookbook");
+                        }
+                    }
+                    else
+                    {
+                        return View("~/Home/Register");
+                    }
+                }
+                return RedirectToAction("~/Home/Pantry");
+            }
+            catch(Exception e)
+            {
+                string message = e.Message;
+                Console.WriteLine("{0} Exception Caught.", e);
+            }
+            return View("~/Home/WeekPlan");
+        }
 
 
-        // 3. ************* EDIT User DETAILS ******************
+
+
+
+        // 4. ************* EDIT User DETAILS ******************
         // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
@@ -89,7 +136,7 @@ namespace JARVIS.Controllers
             }
         }
 
-        // 4. ************* DELETE User DETAILS ******************
+        // 5. ************* DELETE User DETAILS ******************
         // GET: User/Delete/5
         public ActionResult Delete(int id)
         {
@@ -109,5 +156,19 @@ namespace JARVIS.Controllers
                 return View();
             }
         }
+
+
+
+        public ActionResult AddFavs() {
+            IConnection connection = new Connection();
+            connection.Fetch();
+
+            IDAO<Utilizador> uDAO = new UtilizadorDAO(connection);
+
+            ModelState.Clear();
+            return View();
+        }
+
+
     }
 }
