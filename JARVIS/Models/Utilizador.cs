@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JARVIS.Models
 {
     public class Utilizador
     {
-        public Utilizador(int id, string nome, DateTime data, string username, string pass, string email, string foto, int admin)
+        public Utilizador(int id, string nome, DateTime data, string username, string pass, string email, byte[] foto, int admin)
         {
             idUtilizador = id;
             Nome = nome;
@@ -27,7 +25,7 @@ namespace JARVIS.Models
         public String Username { get; set; }
         public String Password { get; set; }
         public String Email { get; set; }
-        public String Foto { get; set; }
+        public byte[] Foto { get; set; }
         public int Admin { get; set; }
         public virtual Historico Hist { get; set; }
         public virtual Despensa Despensa { get; set; }

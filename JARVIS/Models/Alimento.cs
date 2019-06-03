@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web.Mvc.Html;
+
 
 namespace JARVIS.Models
 {
@@ -21,6 +21,7 @@ namespace JARVIS.Models
         public double ValorNutricional { get; set; }
         public DateTime Validade { get; set; }
         public bool IsChecked { get; set; }
+        public int alternativo { get; set; }
 
 
         public bool Indispensavel()
@@ -31,12 +32,8 @@ namespace JARVIS.Models
 
         public bool temAlternativa()
         {
-            return true; //definir
-        }
-
-        public Alimento alternativa()
-        {
-            return new Alimento(); //definir
+            if (alternativo > 0) return true;
+            else return false;
         }
 
 

@@ -1,5 +1,4 @@
-﻿@model JARVIS.Models.Receita;
-
+﻿@model JARVIS.Models.Receita
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,6 +53,10 @@
             clear: both;
             display: table;
         }
+
+        .checked {
+            color: orange;
+        }
     </style>
 
 
@@ -86,13 +89,13 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
-                    <h1 class="mb-2 bread">Recipies</h1>
+                    <h1 class="mb-2 bread">Evaluation</h1>
                 </div>
             </div>
         </div>
     </section>
 
-
+   
     <section class="ftco-section ftco-wrap-about ftco-no-pb ftco-no-pt">
         <div class="container">
             <div class="row no-gutters">
@@ -102,68 +105,68 @@
                 <div class="col-sm-7 wrap-about py-5 ftco-animate">
                     <div class="heading-section mt-5 mb-4">
                         <div class="pl-lg-5 ml-md-5">
-                            <span class="subheading">Receita 1</span>
+                            <span class="subheading"> @Model.Descricao</span>
                             <h2 class="mb-4">Uma delícia!</h2>
-                           
-                        </div>
-                    </div>
-                    <div class="pl-lg-5 ml-md-5">
 
-                        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+                            <h3>Did you like this recipe?</h3>
+                            <span class="fa fa-star" id="star1" onclick="add(this,1)"></span>
+                            <span class="fa fa-star" id="star2" onclick="add(this,2)"></span>
+                            <span class="fa fa-star" id="star3" onclick="add(this,3)"></span>
+                            <span class="fa fa-star" id="star4" onclick="add(this,4)"></span>
+                            <span class="fa fa-star" id="star5" onclick="add(this,5)"></span>
+                            <p></p>
+                            <ul class="pager">
+                                <%: @Html.ActionLink("Evaluation", "Evaluation", new { id = Model.idReceita,passo=getRating() }, null)%>
+                            </ul>
+                                <script>
+                                    function add(ths, sno) {
 
 
-                        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+                                        for (var i = 1; i <= 5; i++) {
+                                            var cur = document.getElementById("star" + i)
+                                            cur.className = "fa fa-star"
+                                        }
 
-                        <div class="container">
-
-                            <h3>Foods needed:</h3>
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <form method="post">
-                                        <table class="table">
-                                            <tr>
-                                                <th>Alimento</th>
-                                                <th>Disponivel</th>
-                                            </tr>
-                                            @foreach (var order in Model.Ingredientes)
-                                            {
-                                                <tr>
-                                                    <td>
-                                                        <input type="hidden" name="Alimentos.Index" value="@order.idAlimento" />
-                                                        <input type="hidden" name="Alimentos[@order.idAlimento].Nome" value="@order.Nome" />
-                                                        @order.Nome
-                                                    </td>
-                                                    <td><label for="checkOption"><input name="Alimentos[@order.idAlimento].IsChecked" type="checkbox" id="checkOption" value="true" /></label></td>
-                                                </tr>
+                                        for (var i = 1; i <= sno; i++) {
+                                            var cur = document.getElementById("star" + i)
+                                            if (cur.className == "fa fa-star") {
+                                                cur.className = "fa fa-star checked"
                                             }
-                                        </table>
-                                        <button onclick="Check()">Start Recipe</button>
-                                    </form>
-                                </div>
-                            </div>
+                                        }
 
-                            <p>Descrição da receita.</p>
+                                    }
+                             function getRating() {
+                                 var count = 0;
+                                 for (var i = 1; i <= 5; i++) {
+                                     var cur = document.getElementById("star" + i)
+                                            if (cur.className == "fa fa-star checked") {
+                                                count++;
+                                            }
+                                 }
+                                 return count;
+                                 }
+    }
+                                </script>
 
                         </div>
-                       
+
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-     <footer class="ftco-footer ftco-bg-dark ftco-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">JARVIS</h2>
-              <p>O seu assistente de cozinha, o seu melhor amigo.</p>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-              </ul>
-            </div>
-          </div>
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-6 col-lg-3">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">JARVIS</h2>
+                        <p>O seu assistente de cozinha, o seu melhor amigo.</p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3"></ul>
+                    </div>
+                </div>
 
     </footer>
 

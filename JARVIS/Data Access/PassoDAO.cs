@@ -15,7 +15,7 @@ namespace JARVIS.DataAccess
             _connection = connection;
         }
 
-        public Passo FindById(string key)
+        public Passo FindById(int key)
         {
             Passo p = new Passo();
             using (SqlConnection con = _connection.Fetch())
@@ -35,10 +35,16 @@ namespace JARVIS.DataAccess
                         p.Descricao = row["Descricao"].ToString();
                         p.Ordem = int.Parse(row["Ordem"].ToString());
                         p.idReceita = int.Parse(row["idReceita"].ToString());
+                        p.imagem=(byte[])row["imagem"];
+                        p.video = row["video"].ToString();
                     }
                 }
             }
             return p;
+        }
+        public Passo FindByName(string key)
+        {
+            throw new NotImplementedException();
         }
 
         public Passo Insert(Passo obj)
@@ -131,11 +137,6 @@ namespace JARVIS.DataAccess
                 }
             }
             return updated;
-        }
-
-        public Passo FindByEmail(string key)
-        {
-            throw new NotImplementedException();
         }
     }
 }

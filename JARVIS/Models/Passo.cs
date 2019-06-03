@@ -8,6 +8,9 @@ namespace JARVIS.Models
         public int idReceita { get; set; }
         public string Descricao { get; set; }
         public int Ordem { get; set; }
+        public byte[] imagem { get; set; }
+        
+        public string video { get; set; }
 
         public Passo()
         {
@@ -17,12 +20,14 @@ namespace JARVIS.Models
             Ordem = -1;
         }
 
-        public Passo(int idPasso, int idr, string desc, int o)
+        public Passo(int idPasso, int idr, string desc, int o,byte[] img,string vid)
         {
             this.idPasso = idPasso;
             idReceita = idr;
             Descricao = desc;
             Ordem = o;
+            imagem = img;
+            video = vid;
         }
     }
 }

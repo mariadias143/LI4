@@ -1,4 +1,5 @@
-﻿@model JARVIS.Models.Receita;
+﻿@model JARVIS.Models.Passo
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,16 +10,52 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
+
 <body>
 
-    <div class="container">
-        <h2>Pager</h2>
-        <p>The .pager class provides previous and next buttons (links):</p>
-        <ul class="pager">
-            <li> @Html.ActionLink("Create A New Invoice", "Create", "Travel", null)</li>
-            <li><a href="~/Recipe/Execute">Next</a></li>
-        </ul>
-    </div>
+    <table class="table">
+        <tr>
+              <th> 
+            @Html.DisplayNameFor(model => model.Ordem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idPasso)
+            </th>
+            <th></th>
+        </tr>
 
-</body>
-</html>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Ordem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.idPasso)
+            </td>
+            <td>
+                <img src="data:image;base64,@System.Convert.ToBase64String(Model.imagem)" />
+
+            </td>
+
+        </tr>
+
+           
+
+            </table>
+            <div class="container">
+                <h2>Pager</h2>
+                <p>The .pager class provides previous and next buttons (links):</p>
+                <ul class="pager">
+                    <li> @Html.ActionLink("Next", "Execute",new {idReceita=Model.idReceita, passo = Model.idPasso,},null)</li>
+                    <li> @Html.ActionLink("Prev", "Execute", new { idReceita = Model.idReceita, passo = Model.idPasso-2, }, null)</li>
+                </ul>
+            </div>
+
+        </body>
+    </html>
