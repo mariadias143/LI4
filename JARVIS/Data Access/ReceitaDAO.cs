@@ -16,16 +16,17 @@ namespace JARVIS.DataAccess
             _connection = connection;
         }
 
-        public Receita FindById(string key)
+        public Receita FindById(int key)
         {
             Receita r = new Receita();
+            int ind = 0;
             using (SqlConnection con = _connection.Fetch())
             {
                 string query = "SELECT * FROM Receita where idReceita=@idReceita";
                 var dt = new DataTable();
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
-                    command.Parameters.AddWithValue("@idReceita", key);
+                    command.Parameters.AddWithValue("@idReceita", key.ToString());
                     SqlDataReader reader = command.ExecuteReader();
                     dt.Load(reader);
                     reader.Close();
@@ -40,12 +41,43 @@ namespace JARVIS.DataAccess
                         r.Duracao = int.Parse(row["Duracao"].ToString());
                     }
                 }
-                List<Alimento> alimentos = ListaAlimentos(con, Convert.ToInt32(key));
+
+                String query2 = "SELECT * FROM Receita_Alimento where idReceita=@idReceita";
+                DataTable dt2 = new DataTable();
+
+                using (SqlCommand command2 = new SqlCommand(query2, con))
+                {
+                    command2.Parameters.AddWithValue("@idReceita", key.ToString());
+                    SqlDataReader reader2 = command2.ExecuteReader();
+                    dt2.Load(reader2);
+                    reader2.Close();
+
+                    foreach (DataRow row2 in dt2.Rows)
+                    {
+                        ind = int.Parse(row2["Indispensável"].ToString());
+                        if (ind > 0)
+                            r.indispensaveis.Add(int.Parse(row2["idAlimento"].ToString()));
+                    }
+                }
+
+
+                List<Alimento> alimentos = new List<Alimento>();
+                alimentos = ListaAlimentos(con, key);
                 r.Ingredientes = alimentos;
+
+                List<Passo> passos = new List<Passo>();
+                passos = ListaPassos(con, key);
+                r.Passos = passos;
             }
+
             return r;
         }
 
+
+        public Receita FindByName(string key)
+        {
+            throw new NotImplementedException();
+        }
 
 
 
@@ -73,8 +105,7 @@ namespace JARVIS.DataAccess
 
         public Collection<Receita> ListAll()
         {
-            int id;
-            Collection <Receita> receitas = new Collection<Receita>();
+            Collection<Receita> receitas = new Collection<Receita>();
             using (SqlConnection con = _connection.Fetch())
             {
                 string queryString = "SELECT * FROM Receita";
@@ -98,16 +129,17 @@ namespace JARVIS.DataAccess
                                 Classificacao = float.Parse(row["Classificacao"].ToString()),
                                 Duracao = int.Parse(row["Duracao"].ToString())
                             };
-                            id = int.Parse(row["idReceita"].ToString());
-                            List<Alimento> alimentos = ListaAlimentos(con,id);
+                           int id = int.Parse(row["idReceita"].ToString());
+                            List<Alimento> alimentos = ListaAlimentos(con, id);
                             a.Ingredientes = alimentos;
                             receitas.Add(a);
                         }
                     }
                 }
+                return receitas;
             }
-            return receitas;
         }
+
 
 
 
@@ -115,93 +147,101 @@ namespace JARVIS.DataAccess
         {
             List<Alimento> alimentos = new List<Alimento>();
 
-                string query = "SELECT idAlimento FROM Receita_Alimento WHERE idReceita =@id";
+            string query = "SELECT idAlimento FROM Receita_Alimento WHERE idReceita =@id";
 
-                using (SqlCommand command = new SqlCommand(query, con))
-                {
-                    command.Parameters.AddWithValue("@id", id);
-
-                    using (SqlDataAdapter adapter = new SqlDataAdapter())
-                    {
-                        adapter.SelectCommand = command;
-                        DataSet tab = new DataSet();
-                        adapter.Fill(tab);
-
-                        foreach (DataTable table in tab.Tables)
-                        {
-                            foreach (DataRow row in table.Rows)
-                            {
-                                string alimento = row["idAlimento"].ToString();
-                                string query2 = "SELECT * FROM Alimento where idAlimento = @idAl";
-                                using (SqlCommand command2 = new SqlCommand(query2, con))
-                                {
-                                    command2.Parameters.AddWithValue("@idAl", alimento);
-                                    using (SqlDataAdapter adapter2 = new SqlDataAdapter())
-                                    {
-                                        adapter2.SelectCommand = command2;
-                                        DataSet tab2 = new DataSet();
-                                        adapter2.Fill(tab2);
-
-                                        foreach (DataTable table2 in tab2.Tables)
-                                        {
-                                            foreach (DataRow row2 in table2.Rows)
-                                            {
-                                                Alimento a = new Alimento
-                                                {
-                                                    idAlimento = int.Parse(row2["idAlimento"].ToString()),
-                                                    Nome = row2["Nome"].ToString(),
-                                                    ValorNutricional = double.Parse(row2["ValorNutricional"].ToString()),
-                                                    Validade = DateTime.Parse(row2["Validade"].ToString())
-
-                                                };
-                                                alimentos.Add(a);
-                                            }
-                                        }
-                                    }
-
-                                }
-                            }
-                        }
-                    }
-                }
-            return alimentos;
-        }
-
-
-
-
-        public SortedList<int, Passo> ListaPassosOrdenados(int id)
-        {
-            SortedList<int, Passo> ret = new SortedList<int, Passo>();
-
-            using (SqlConnection con = _connection.Fetch())
+            using (SqlCommand command = new SqlCommand(query, con))
             {
-                string queryString = "SELECT * FROM Instrução WHERE idReceita = id";
+                command.Parameters.AddWithValue("@id", id.ToString());
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
-                    adapter.SelectCommand = new SqlCommand(queryString, con);
+                    adapter.SelectCommand = command;
                     DataSet tab = new DataSet();
                     adapter.Fill(tab);
+
                     foreach (DataTable table in tab.Tables)
                     {
                         foreach (DataRow row in table.Rows)
                         {
-                            int ordem = int.Parse(row["Ordem"].ToString());
-                            Passo p = new Passo
+                            string alimento = row["idAlimento"].ToString();
+                            string query2 = "SELECT * FROM Alimento where idAlimento = @idAl";
+                            using (SqlCommand command2 = new SqlCommand(query2, con))
                             {
-                                idPasso = int.Parse(row["idPasso"].ToString()),
-                                idReceita = int.Parse(row["idReceita"].ToString()),
-                                Descricao = row["Descricao"].ToString(),
-                                Ordem = ordem
-                            };
-                            ret.Add(ordem, p);
+                                command2.Parameters.AddWithValue("@idAl", alimento);
+                                using (SqlDataAdapter adapter2 = new SqlDataAdapter())
+                                {
+                                    adapter2.SelectCommand = command2;
+                                    DataSet tab2 = new DataSet();
+                                    adapter2.Fill(tab2);
+
+                                    foreach (DataTable table2 in tab2.Tables)
+                                    {
+                                        foreach (DataRow row2 in table2.Rows)
+                                        {
+                                            Alimento a = new Alimento
+                                            {
+                                                idAlimento = int.Parse(row2["idAlimento"].ToString()),
+                                                Nome = row2["Nome"].ToString(),
+                                                ValorNutricional = double.Parse(row2["ValorNutricional"].ToString()),
+                                                Validade = DateTime.Parse(row2["Validade"].ToString())
+
+                                            };
+                                            alimentos.Add(a);
+                                        }
+                                    }
+                                }
+
+                            }
                         }
                     }
                 }
             }
-            return ret;
+            return alimentos;
         }
+
+
+        public List<Passo> ListaPassos(SqlConnection con, int id)
+        {
+            List<Passo> passos = new List<Passo>();
+
+            string query = "SELECT * FROM Instrução WHERE idReceita =@id";
+
+            using (SqlCommand command = new SqlCommand(query, con))
+            {
+                command.Parameters.AddWithValue("@id", id);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter())
+                {
+                    adapter.SelectCommand = command;
+                    DataSet tab = new DataSet();
+                    adapter.Fill(tab);
+
+                    foreach (DataTable table in tab.Tables)
+                    {
+                        foreach (DataRow row in table.Rows)
+                        {
+                            Passo p = new Passo
+                            {
+                                idPasso = int.Parse(row["idPasso"].ToString()),
+                                Descricao = row["Descricao"].ToString(),
+                                idReceita = int.Parse(row["idReceita"].ToString()),
+                                Ordem = int.Parse(row["Ordem"].ToString()),
+                                imagem = (byte[])row["imagem"],
+                                video = row["video"].ToString()
+
+
+                        };
+                            passos.Add(p);
+                        }
+                                    
+
+                    }
+                }
+            }
+            return passos;
+        }
+
+
 
 
 
@@ -227,7 +267,8 @@ namespace JARVIS.DataAccess
             return removed;
         }
 
-
+    
+       
 
         public bool Update(string key, Receita obj)
         {

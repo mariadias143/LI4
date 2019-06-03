@@ -1,0 +1,126 @@
+﻿@model JARVIS.Models.Receita
+
+<html>
+<body>
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 class="mb-2 bread">Recipies</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <section class="ftco-section ftco-wrap-about ftco-no-pb ftco-no-pt">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-sm-5 img img-2 d-flex align-items-center justify-content-center justify-content-md-end" style="background-image: url(images/about.jpg); position: page ">
+
+                </div>
+                <div class="col-sm-7 wrap-about py-5 ftco-animate">
+                    <div class="heading-section mt-5 mb-4">
+                        <div class="pl-lg-5 ml-md-5">
+                            <span class="subheading">Receita 1</span>
+                            <h2 class="mb-4">Uma delícia!</h2>
+
+                        </div>
+                    </div>
+                    <div class="pl-lg-5 ml-md-5">
+
+                        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+                        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+                        <div class="container">
+
+                            <h3>Foods needed:</h3>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <form method="post">
+                                        <table class="table">
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Alimento</th>
+                                                <th>Disponivel</th>
+                                            </tr>
+                                            @foreach (var order in Model.Ingredientes)
+                    {
+                        <tr>
+                            <td>
+                                <input type="hidden" name="Ingredientes.Index" value="@order.idAlimento" />
+                                <input type="hidden" name="Ingredientes.[@order.idAlimento].idAlimento" value="@order.idAlimento" />
+                                <input type="hidden" name="Ingredientes[@order.idAlimento].Nome" value="@order.Nome" />
+                                <input type="hidden" name="Ingredientes.[@order.idAlimento].Validade" value="@order.Validade" />
+                                <input type="hidden" name="Ingredientes[@order.idAlimento].ValorNutricional" value="@order.ValorNutricional" />
+                                @order.idAlimento
+                            </td>
+                            <td>
+                                @order.Nome
+                            </td>
+                            <td><label for="checkOption"><input name="Ingredientes[@order.idAlimento].IsChecked" type="checkbox" id="checkOption" value="true" /></label></td>
+                        </tr>
+}
+                                        </table>
+                                        <span>@ViewBag.condicional</span>
+                                        <button onclick="Check()">Start Recipe</button>
+                                       
+                                    </form>
+                                </div>
+                            </div>
+
+
+                            <p>Descrição da receita.</p>
+
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">JARVIS</h2>
+              <p>O seu assistente de cozinha, o seu melhor amigo.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+              </ul>
+            </div>
+          </div>
+
+    </footer>
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
+
+

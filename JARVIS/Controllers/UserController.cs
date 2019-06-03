@@ -21,7 +21,7 @@ namespace JARVIS.Controllers
             IDAO<Utilizador> uDAO = new UtilizadorDAO(connection);
 
             ModelState.Clear();
-            return View(uDAO.ListAll());
+            return View(uDAO.FindById(1));
         }
 
         // 2. *************ADD NEW User ******************
@@ -68,7 +68,7 @@ namespace JARVIS.Controllers
             connection.Fetch();
             IDAO<Utilizador> uDAO = new UtilizadorDAO(connection);
 
-            return View(uDAO.FindById(Convert.ToString(id)));
+            return View(uDAO.FindById(1));
         }
 
         // POST: User/Edit/5

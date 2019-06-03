@@ -30,27 +30,27 @@ VALUES
 	(2,'Tortellini com presunto e mozzarella','Tortellinis recheados com presunto, queijo mozzarella e tomate seco.','Difícil',4.1,65);
 
 INSERT INTO Instrução
-(idPasso, Descricao, Ordem, idReceita)
+(Descricao, Ordem, idReceita,imagem,video)
 VALUES
-	(1,'Coloque a farinha numa bancada ou tábua e faça um buraco no meio. Coloque os ovos, o sal e o azeite.',1,1),
-	(2,'Bata com a ajuda de um garfo sem desfazer as “paredes” de farinha.',2,1),
-	(3,'Comece a juntar lentamente a farinha com a ponta dos dedos.',3,1),
-	(4,'Agregue a farinha formando uma bola de massa. Trabalhe com as mãos: enrole a massa da periferia para o centro e vice-versa, de forma a esmagar e a estender a massa com a palma da mão. É um passo demorado e requer algum trabalho de braços.',4,1),
-	(5,'Forme uma bola de massa com textura sedosa e sem grumos. Depois, envolva-a em película aderente e deixe-a descansar no mínimo 30 minutos no frigorífico.',5,1),
-	(6,'Retire a massa do frigorífico e comece a trabalhá-la com o rolo sobre uma superfície limpa e polvilhada com farinha.',6,1),
-	(7,'Dobre a massa em formato de “envelope” e volte a estender com o rolo. Repita o processo até obter alguma elasticidade',7,1),
-	(8,'A massa começa a aproximar-se da espessura pretendida. Corte pequenas porções com a faca e continue a estender.',8,1),
-	(9,'A massa está pronta quando ganhar alguma transparência.',9,1),
-	(10,'Corte-a em forma de rectângulo, descartando as pontas irregulares. Dobre-a em fole (largura entre 4 a 5 cm).',10,1),
-	(11,'Escolha a a medida e corte-a em tiras.',11,1),
-	(12,'A massa está pronta. Polvilhe-a com farinha e solte as tiras para que não colem antes de serem cozidas. A massa deve ser cozida quase de imediato, numa panela com bastante água a ferver 4 a 5 minutos até que fique al dente.',12,1),
-	(13,'Para os tortellini: salpique a bancada de trabalho com farinha e misture aí a farinha e o sal. Abra uma cova e acrescente o azeite e os ovos. Amasse bem com as mãos, até obter uma massa consistente e homogénea. Deixe descansar 15 minutos.',1,2),
-	(14,'Com um rolo, estenda a massa até ficar muito fina. Corte-a em pequenos círculos com cerca de 8cm, usando um corta-massas ou um copo.',2,2),
-	(15,'Para o recheio: pique finamente as chalotas e os dentes de alho e salteie-os no azeite quente até a chalota começar a murchar. Adicione o queijo Mozzarella cortado em cubos, o presunto e o tomate seco laminado.',3,2),
-	(16,'Envolva bem e tempere com metade do sal, pimenta e a salva cortada em troços finos. Retire do lume, deixe arrefecer um pouco e recheie os tortellini. Reserve.',4,2),
-	(17,'Coloque um pouco de recheio no centro dos círculos de massa e feche-os, unindo as pontas. Passe com um pouco de água nos bordos e pressione para prender melhor.',5,2),
-	(18,'Lamine o manjericão e a salva, coloque-os num tacho pequeno e adicione o azeite e a mostarda em grão. Envolva bem e leve ao lume até levantar fervura. Retire e reserve.',6,2),
-	(19,'Coza a massa em água a ferver temperada com sal durante 3 minutos ou até ficar al dente. Retire, escorra e coloque os tortellini num prato fundo. Regue-os com o molho de ervas quente. Sirva de imediato.',7,2);
+	('Coloque a farinha numa bancada ou tábua e faça um buraco no meio. Coloque os ovos, o sal e o azeite.',1,1,null,null),
+	('Bata com a ajuda de um garfo sem desfazer as “paredes” de farinha.',2,1,null,null),
+	('Comece a juntar lentamente a farinha com a ponta dos dedos.',3,1,null,null),
+	('Agregue a farinha formando uma bola de massa. Trabalhe com as mãos: enrole a massa da periferia para o centro e vice-versa, de forma a esmagar e a estender a massa com a palma da mão. É um passo demorado e requer algum trabalho de braços.',4,1,null,null),
+	('Forme uma bola de massa com textura sedosa e sem grumos. Depois, envolva-a em película aderente e deixe-a descansar no mínimo 30 minutos no frigorífico.',5,1,null,null),
+	('Retire a massa do frigorífico e comece a trabalhá-la com o rolo sobre uma superfície limpa e polvilhada com farinha.',6,1,null,null),
+	('Dobre a massa em formato de “envelope” e volte a estender com o rolo. Repita o processo até obter alguma elasticidade',7,1,null,null),
+	('A massa começa a aproximar-se da espessura pretendida. Corte pequenas porções com a faca e continue a estender.',8,1,null,null),
+	('A massa está pronta quando ganhar alguma transparência.',9,1,null,null),
+	('Corte-a em forma de rectângulo, descartando as pontas irregulares. Dobre-a em fole (largura entre 4 a 5 cm).',10,1,null,null),
+	('Escolha a a medida e corte-a em tiras.',11,1,null,null),
+	('A massa está pronta. Polvilhe-a com farinha e solte as tiras para que não colem antes de serem cozidas. A massa deve ser cozida quase de imediato, numa panela com bastante água a ferver 4 a 5 minutos até que fique al dente.',12,1,null,null),
+	('Para os tortellini: salpique a bancada de trabalho com farinha e misture aí a farinha e o sal. Abra uma cova e acrescente o azeite e os ovos. Amasse bem com as mãos, até obter uma massa consistente e homogénea. Deixe descansar 15 minutos.',1,2,null,null),
+	('Com um rolo, estenda a massa até ficar muito fina. Corte-a em pequenos círculos com cerca de 8cm, usando um corta-massas ou um copo.',2,2,null,null),
+	('Para o recheio: pique finamente as chalotas e os dentes de alho e salteie-os no azeite quente até a chalota começar a murchar. Adicione o queijo Mozzarella cortado em cubos, o presunto e o tomate seco laminado.',3,2,null,null),
+	('Envolva bem e tempere com metade do sal, pimenta e a salva cortada em troços finos. Retire do lume, deixe arrefecer um pouco e recheie os tortellini. Reserve.',4,2,null,null),
+	('Coloque um pouco de recheio no centro dos círculos de massa e feche-os, unindo as pontas. Passe com um pouco de água nos bordos e pressione para prender melhor.',5,2,null,null),
+	('Lamine o manjericão e a salva, coloque-os num tacho pequeno e adicione o azeite e a mostarda em grão. Envolva bem e leve ao lume até levantar fervura. Retire e reserve.',6,2,null,null),
+	('Coza a massa em água a ferver temperada com sal durante 3 minutos ou até ficar al dente. Retire, escorra e coloque os tortellini num prato fundo. Regue-os com o molho de ervas quente. Sirva de imediato.',7,2,null,null);
 
 INSERT INTO Alimento
 (idAlimento, Nome, ValorNutricional, Validade)

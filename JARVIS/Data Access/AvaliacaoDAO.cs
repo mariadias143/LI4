@@ -15,11 +15,12 @@ namespace JARVIS.DataAccess
             _connection = connection;
         }
 
-        public Avaliacao FindById(string key)
+        public Avaliacao FindById(int key)
         {
             Avaliacao a = new Avaliacao();
             using (SqlConnection con = _connection.Fetch())
             {
+
                 string query = "SELECT * FROM Avaliacao where idAvaliacao=@idAvaliacao";
                 var dt = new DataTable();
                 using (SqlCommand command = new SqlCommand(query, con))
@@ -41,13 +42,18 @@ namespace JARVIS.DataAccess
             return a;
         }
 
+        public Avaliacao FindByName(string key)
+        {
+            throw new NotImplementedException();
+        }
+
         public Avaliacao Insert(Avaliacao obj)
         {
             using (SqlConnection con = _connection.Fetch())
             {
                 String query = "INSERT INTO dbo.Avaliacao(Classificacao,IdReceita,IdUtilizador) values (@Classificacao,@IdReceita,@IdUtilizador)";
 
-                using (SqlCommand command = _connection.Fetch().CreateCommand())
+                using (SqlCommand command = new SqlCommand(query,con))
                 {
 
                     command.Parameters.Add("@Classificacao", SqlDbType.Int).Value = obj.Classificacao;
@@ -76,20 +82,20 @@ namespace JARVIS.DataAccess
                     foreach (DataTable table in tab.Tables)
                     {
                         foreach (DataRow row in table.Rows)
-                        { 
-                           Avaliacao a = new Avaliacao
-                           {
-                               Classificacao = int.Parse(row["Classificacao"].ToString()),
-                               idReceita = int.Parse(row["idReceita"].ToString()),
-                               idUtilizador = int.Parse(row["idUtilizador"].ToString())
-                           };
-                           avaliacoes.Add(a);
+                        {
+                            Avaliacao a = new Avaliacao
+                            {
+                                Classificacao = int.Parse(row["Classificacao"].ToString()),
+                                idReceita = int.Parse(row["idReceita"].ToString()),
+                                idUtilizador = int.Parse(row["idUtilizador"].ToString())
+                            };
+                            avaliacoes.Add(a);
+                        }
                     }
                 }
+                return avaliacoes;
             }
-            return avaliacoes;
         }
-    }
 
         public bool remove(string key)
         {
@@ -101,7 +107,7 @@ namespace JARVIS.DataAccess
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
                     command.Parameters.AddWithValue("@idAvaliacao", key);
-                    if(command.ExecuteNonQuery() > 0)
+                    if (command.ExecuteNonQuery() > 0)
                     {
                         removed = true;
                     }
@@ -128,7 +134,7 @@ namespace JARVIS.DataAccess
                     {
                         updated = true;
                     }
-                }                
+                }
 
             }
             return updated;

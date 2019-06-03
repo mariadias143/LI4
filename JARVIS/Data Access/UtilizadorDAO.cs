@@ -15,7 +15,7 @@ namespace JARVIS.DataAccess
             _connection = connection;
         }
 
-        public Utilizador FindById(string key)
+        public Utilizador FindById(int key)
         {
             Utilizador u = new Utilizador();
             using (SqlConnection con = _connection.Fetch())
@@ -37,14 +37,19 @@ namespace JARVIS.DataAccess
                         u.Username = row["Username"].ToString();
                         u.Password = row["Password"].ToString();
                         u.Email = row["Email"].ToString();
-                        u.Foto = row["Foto"].ToString();
+                        u.Foto = (byte[])row["Foto"];
+                        //Console.WriteLine("args1: {0}", (byte[])row["Foto"]);
                         u.Admin = int.Parse(row["Admin"].ToString());
                     }
+                    reader.Close();
                 }
             }
             return u;
         }
-
+        public Utilizador FindByName(string key)
+        {
+            throw new NotImplementedException();
+        }
 
         public Utilizador Insert(Utilizador obj)
         {
@@ -95,8 +100,8 @@ namespace JARVIS.DataAccess
                                 Username = row["Username"].ToString(),
                                 Password = row["Password"].ToString(),
                                 Email = row["Email"].ToString(),
-                                Foto = row["Foto"].ToString(),
-                                Admin = int.Parse(row["Admin"].ToString())
+                                Foto = (byte[])row["Foto"],
+                            Admin = int.Parse(row["Admin"].ToString())
                             };
                             utilizadores.Add(a);
                         }

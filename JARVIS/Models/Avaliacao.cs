@@ -16,5 +16,7 @@ namespace JARVIS.Models
         public int Classificacao { get; set; }
         public int idReceita { get; set; }
         public int idUtilizador { get; set; }
+        public string SelectedAnswer { get; set; }
     }
+
 }

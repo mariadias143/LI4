@@ -1,0 +1,31 @@
+﻿@model JARVIS.Models.Avaliacao
+@using (Html.BeginForm("Search", "Product"))
+{
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .w3-btn {
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <table>
+
+
+        @Html.RadioButtonFor(m => m.SelectedAnswer, "Answer1")
+        @Html.RadioButtonFor(m => m.SelectedAnswer, "Answer2")
+        @Html.RadioButtonFor(m => m.SelectedAnswer, "Answer3")
+        @Html.RadioButtonFor(m => m.SelectedAnswer, "Answer4")
+        @Html.RadioButtonFor(m => m.SelectedAnswer, "Answer5")
+
+
+    </table>
+
+    <body>
+
+        <a href="~/Home/Index">Submit</a>
+    </body>
+
+
+
+}
