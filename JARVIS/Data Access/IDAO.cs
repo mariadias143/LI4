@@ -14,6 +14,9 @@ namespace JARVIS.DataAccess
         //FindById - o ID na nossa base de dados é uma tag de texto
         T FindById(string key);
 
+        //FindByEmail
+        T FindByEmail(string key);
+
         //Update data
         bool Update(string key, T obj);
 

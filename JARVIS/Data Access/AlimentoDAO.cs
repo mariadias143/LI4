@@ -135,6 +135,11 @@ namespace JARVIS.DataAccess
             }
             return updated;
         }
+
+        public Alimento FindByEmail(string key)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

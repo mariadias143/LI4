@@ -151,5 +151,35 @@ namespace JARVIS.DataAccess
             }
             return updated;
         }
+
+        public Utilizador FindByEmail(string key)
+        {
+            Utilizador u = new Utilizador();
+            using (SqlConnection con = _connection.Fetch())
+            {
+                string query = "SELECT * FROM Utilizador where Email=@Email";
+                var dt = new DataTable();
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@Email", key);
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        u.idUtilizador = int.Parse(row["idUtilizador"].ToString());
+                        u.Nome = row["Nome"].ToString();
+                        u.DataNascimento = DateTime.Parse(row["DataNascimento"].ToString());
+                        u.Username = row["Username"].ToString();
+                        u.Password = row["Password"].ToString();
+                        u.Email = row["Email"].ToString();
+                        u.Foto = row["Foto"].ToString();
+                        u.Admin = int.Parse(row["Admin"].ToString());
+                    }
+                }
+            }
+            return u;
+        }
     }
 }

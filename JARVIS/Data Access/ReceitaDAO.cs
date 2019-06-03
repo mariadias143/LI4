@@ -254,5 +254,10 @@ namespace JARVIS.DataAccess
             return updated;
         }
 
+        public Receita FindByEmail(string key)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

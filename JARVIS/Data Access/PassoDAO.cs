@@ -132,5 +132,10 @@ namespace JARVIS.DataAccess
             }
             return updated;
         }
+
+        public Passo FindByEmail(string key)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -133,5 +133,10 @@ namespace JARVIS.DataAccess
             }
             return updated;
         }
+
+        public Avaliacao FindByEmail(string key)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
