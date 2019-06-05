@@ -192,3 +192,6 @@ C:/Users/PC - Luis/Desktop/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Rec
 /Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.csproj.CopyComplete
 /Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Home/About.g.cshtml.cs
 /Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Home/Recipes.g.cshtml.cs
+/Users/ines/Desktop/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Home/About.g.cshtml.cs
+/Users/ines/Desktop/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Home/Recipes.g.cshtml.cs
+/Users/ines/Desktop/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LayoutTeste.g.cshtml.cs

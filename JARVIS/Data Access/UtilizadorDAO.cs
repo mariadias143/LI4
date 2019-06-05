@@ -64,7 +64,7 @@ namespace JARVIS.DataAccess
                     command.Parameters.Add("@Username", SqlDbType.VarChar).Value = obj.Username ?? (object)DBNull.Value;
                     command.Parameters.Add("@Password", SqlDbType.VarChar).Value = obj.Password ?? (object)DBNull.Value;
                     command.Parameters.Add("@Email", SqlDbType.VarChar).Value = obj.Email ?? (object)DBNull.Value;
-                    command.Parameters.Add("@Foto", SqlDbType.VarChar).Value = obj.Foto ?? (object)DBNull.Value;
+                    command.Parameters.Add("@Foto", SqlDbType.VarBinary).Value = obj.Foto ?? (object)DBNull.Value;
                     command.Parameters.AddWithValue("@Admin", 0);
 
                     command.ExecuteNonQuery();
@@ -101,7 +101,7 @@ namespace JARVIS.DataAccess
                                 Password = row["Password"].ToString(),
                                 Email = row["Email"].ToString(),
                                 Foto = (byte[])row["Foto"],
-                            Admin = int.Parse(row["Admin"].ToString())
+                                Admin = int.Parse(row["Admin"].ToString())
                             };
                             utilizadores.Add(a);
                         }

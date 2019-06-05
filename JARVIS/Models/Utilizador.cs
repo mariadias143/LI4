@@ -1,5 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Web;
+using Microsoft.AspNetCore.Http;
 
 namespace JARVIS.Models
 {
@@ -17,6 +22,8 @@ namespace JARVIS.Models
             Admin = admin;
         }
 
+
+
         public Utilizador() { }
 
         public int idUtilizador { get; set; }
@@ -33,6 +40,8 @@ namespace JARVIS.Models
         public virtual ListaCompras Lista_compras { get; set; }
         public virtual List<Alimento> Alergeneos { get; set; }
         public virtual List<Alimento> Preferencias { get; set; }
+        public string ImageUpload { get; set; }
+
 
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using JARVIS.Models;
 using JARVIS.DataAccess;
+using System.IO;
 
 namespace JARVIS.Controllers
 {
@@ -21,14 +22,15 @@ namespace JARVIS.Controllers
             IDAO<Utilizador> uDAO = new UtilizadorDAO(connection);
 
             ModelState.Clear();
-            return View(uDAO.FindById(1));
+            return View(uDAO.ListAll());
         }
 
         // 2. *************ADD NEW User ******************
         // GET: User/Create
         public ActionResult Register()
         {
-            return View();
+            Utilizador u = new Utilizador();
+            return View(u);
         }
 
         [HttpPost]
@@ -41,20 +43,26 @@ namespace JARVIS.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    IDAO<Utilizador> uDAO = new UtilizadorDAO(connection);
+
                     Utilizador u = new Utilizador();
+                    IDAO<Utilizador> uDAO = new UtilizadorDAO(connection);
+                    byte[] fot = ImageToBinary(smodel.ImageUpload);
 
 
+                    smodel.Foto = fot;
                     uDAO.Insert(smodel);
 
+                    return RedirectToAction("Index");
+
                 }
-                return RedirectToAction("Index");
+                return View();
             }
             catch (Exception e)
             {
                 string message = e.Message; // or using e.InnerException.Message
                 Console.WriteLine("{0} Exception caught.", e);
             }
+            Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
             return View();
         }
 
@@ -108,6 +116,14 @@ namespace JARVIS.Controllers
             {
                 return View();
             }
+        }
+        public static byte[] ImageToBinary(string imagePath)
+        {
+            FileStream fS = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
+            byte[] b = new byte[fS.Length];
+            fS.Read(b, 0, (int)fS.Length);
+            fS.Close();
+            return b;
         }
     }
 }

@@ -13181,11 +13181,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/JARVIS.csproj",
+      "projectUniqueName": "/Users/ines/Desktop/Jarvis/JARVIS/JARVIS.csproj",
       "projectName": "JARVIS",
-      "projectPath": "/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/JARVIS.csproj",
+      "projectPath": "/Users/ines/Desktop/Jarvis/JARVIS/JARVIS.csproj",
       "packagesPath": "/Users/ines/.nuget/packages/",
-      "outputPath": "/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/",
+      "outputPath": "/Users/ines/Desktop/Jarvis/JARVIS/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
