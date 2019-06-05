@@ -6,7 +6,6 @@ namespace JARVIS.Models
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
     public class Receita
     {
-<<<<<<< HEAD
         public Receita()
         {
         }
@@ -14,11 +13,6 @@ namespace JARVIS.Models
         public Receita(int idr, string nome, string descricao, int duracao, float classificacao, string dificuldade)
         {
             idReceita = idr;
-=======
-        public Receita(int id, string nome, string descricao, int duracao, float classificacao, string dificuldade)
-        {
-            idReceita = id;
->>>>>>> 726f6e1fed68bbf5c36d05b3e60e13b394906930
             Nome = nome;
             Descricao = descricao;
             Duracao = duracao;

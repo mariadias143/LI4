@@ -69,7 +69,6 @@
 /Users/pedrofreitas/Desktop/LI4/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.dll
 /Users/pedrofreitas/Desktop/LI4/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.pdb
 /Users/pedrofreitas/Desktop/LI4/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.csproj.CopyComplete
-<<<<<<< HEAD
 C:/Users/PC - Luis/Desktop/Jarvis/JARVIS/bin/Debug/netcoreapp2.2/JARVIS.deps.json
 C:/Users/PC - Luis/Desktop/Jarvis/JARVIS/bin/Debug/netcoreapp2.2/JARVIS.runtimeconfig.json
 C:/Users/PC - Luis/Desktop/Jarvis/JARVIS/bin/Debug/netcoreapp2.2/JARVIS.runtimeconfig.dev.json
@@ -160,35 +159,36 @@ C:/Users/PC - Luis/Desktop/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Rec
 /Users/ines/Desktop/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.dll
 /Users/ines/Desktop/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.pdb
 /Users/ines/Desktop/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.csproj.CopyComplete
-=======
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\bin\Debug\netcoreapp2.2\JARVIS.deps.json
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\bin\Debug\netcoreapp2.2\JARVIS.runtimeconfig.json
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\bin\Debug\netcoreapp2.2\JARVIS.runtimeconfig.dev.json
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\bin\Debug\netcoreapp2.2\JARVIS.dll
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\bin\Debug\netcoreapp2.2\JARVIS.pdb
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\bin\Debug\netcoreapp2.2\JARVIS.Views.dll
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\bin\Debug\netcoreapp2.2\JARVIS.Views.pdb
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.csprojAssemblyReference.cache
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.csproj.CoreCompileInputs.cache
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.RazorAssemblyInfo.cache
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.RazorAssemblyInfo.cs
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.AssemblyInfoInputs.cache
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.AssemblyInfo.cs
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.TagHelpers.input.cache
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.TagHelpers.output.cache
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.RazorCoreGenerate.cache
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\Razor\Views\User\Edit.g.cshtml.cs
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\Razor\Views\User\Index.g.cshtml.cs
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.RazorTargetAssemblyInfo.cache
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.RazorTargetAssemblyInfo.cs
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.Views.pdb
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.dll
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.pdb
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\JARVIS.csproj.CopyComplete
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\Razor\Views\Recipe\Execute.g.cshtml.cs
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\Razor\Views\Recipe\Index.g.cshtml.cs
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\Razor\Views\Recipe\Evaluation.g.cshtml.cs
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\Razor\Views\Recipe\Alternativa.g.cshtml.cs
-C:\Users\PC - Luis\Desktop\Jarvis\JARVIS\obj\Debug\netcoreapp2.2\Razor\Views\Recipe\Ingredients.g.cshtml.cs
->>>>>>> 726f6e1fed68bbf5c36d05b3e60e13b394906930
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/bin/Debug/netcoreapp2.2/JARVIS.deps.json
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/bin/Debug/netcoreapp2.2/JARVIS.runtimeconfig.json
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/bin/Debug/netcoreapp2.2/JARVIS.runtimeconfig.dev.json
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/bin/Debug/netcoreapp2.2/JARVIS.dll
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/bin/Debug/netcoreapp2.2/JARVIS.pdb
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/bin/Debug/netcoreapp2.2/JARVIS.Views.dll
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/bin/Debug/netcoreapp2.2/JARVIS.Views.pdb
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.csprojAssemblyReference.cache
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.csproj.CoreCompileInputs.cache
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.RazorAssemblyInfo.cache
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.RazorAssemblyInfo.cs
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.AssemblyInfoInputs.cache
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.AssemblyInfo.cs
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.TagHelpers.input.cache
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.TagHelpers.output.cache
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.RazorCoreGenerate.cache
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Home/Privacy.g.cshtml.cs
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Recipe/Alternativa.g.cshtml.cs
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Recipe/Evaluation.g.cshtml.cs
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Recipe/Execute.g.cshtml.cs
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Recipe/Index.g.cshtml.cs
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Recipe/Ingredients.g.cshtml.cs
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LayoutTeste.g.cshtml.cs
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/User/Edit.g.cshtml.cs
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/User/Index.g.cshtml.cs
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.RazorTargetAssemblyInfo.cache
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.RazorTargetAssemblyInfo.cs
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.Views.pdb
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.dll
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.pdb
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/JARVIS.csproj.CopyComplete
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Home/About.g.cshtml.cs
+/Users/ines/Desktop/jarvis2/Jarvis/JARVIS/obj/Debug/netcoreapp2.2/Razor/Views/Home/Recipes.g.cshtml.cs

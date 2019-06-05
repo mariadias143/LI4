@@ -1,43 +1,12 @@
-<<<<<<< HEAD
 ﻿@model JARVIS.Models.Receita
-=======
-﻿@model JARVIS.Models.Alimento.ListaAlimentos
->>>>>>> 726f6e1fed68bbf5c36d05b3e60e13b394906930
 
 
 <h5>@ViewBag.Loc</h5>
 
 
-<<<<<<< HEAD
 @for (int i = 0; i < ViewBag.indispensaveis.Count; i++)
 {
     <li>food <b>@ViewBag.indispensaveis[i].idAlimento</b> </li>
     <li>@Html.ActionLink("Begin", "Execute", new {Model.idReceita, passo = 0})</li>
 
 }
-=======
-
-<div class="row">
-    <form method="post">
-    <table class="table">
-        @for (int i = 0; i < ViewBag.alternativa.Count; i++)
-        {
-            <tr>
-                <td>
-                    <input type="hidden" name="Alimentos.Index" value="@ViewBag.alternativa[i].idAlimento" />
-                    <input type="hidden" name="Alimentos.[@i].idAlimento" value="@ViewBag.alternativa[i].idAlimento" />
-                    <input type="hidden" name="Alimentos[@i].Nome" value="@ViewBag.alternativa[i].Nome" />
-                    <input type="hidden" name="Alimentos.[@i].Validade" value="@ViewBag.alternativa[i].Validade" />
-                    <input type="hidden" name="Alimentos[@i].ValorNutricional" value="@ViewBag.alternativa[i].ValorNutricional" />
-                    Use <b>@ViewBag.alternativa[i].Nome</b> instead of @ViewBag.data[i].Nome
-                </td>
-                <td><label for="checkOption"><input name="Alimentos[@ViewBag.alternativa[i].idAlimento].IsChecked" type="checkbox" id="checkOption" value="true" /></label></td>
-            </tr>
-        }
-    </table>
-    <button onclick="Check()">Confirm</button>
-    </form>
-</div>
-
- 
->>>>>>> 726f6e1fed68bbf5c36d05b3e60e13b394906930
