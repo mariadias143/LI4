@@ -22,6 +22,7 @@ namespace JARVIS.Models
         public DateTime Validade { get; set; }
         public bool IsChecked { get; set; }
         public int alternativo { get; set; }
+        public string Quantidade { get; set; }
 
 
         public bool Indispensavel()

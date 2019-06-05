@@ -46,7 +46,7 @@
                                            
                                                 <table class="table">
                                                     <tr>
-                                                        <th>Id</th>
+                                                        <th>Quantidade</th>
                                                         <th>Alimento</th>
                                                         <th>Disponivel</th>
                                                     </tr>
@@ -59,7 +59,7 @@
                                                     <input type="hidden" name="Ingredientes[@order.idAlimento].Nome" value="@order.Nome" />
                                                     <input type="hidden" name="Ingredientes.[@order.idAlimento].Validade" value="@order.Validade" />
                                                     <input type="hidden" name="Ingredientes[@order.idAlimento].ValorNutricional" value="@order.ValorNutricional" />
-                                                    @order.idAlimento
+                                                    @order.Quantidade
                                                 </td>
                                                 <td>
                                                     @order.Nome

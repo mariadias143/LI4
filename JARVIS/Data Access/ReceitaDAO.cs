@@ -65,6 +65,7 @@ namespace JARVIS.DataAccess
                 alimentos = ListaAlimentos(con, key);
                 r.Ingredientes = alimentos;
 
+
                 List<Passo> passos = new List<Passo>();
                 passos = ListaPassos(con, key);
                 r.Passos = passos;
@@ -147,7 +148,7 @@ namespace JARVIS.DataAccess
         {
             List<Alimento> alimentos = new List<Alimento>();
 
-            string query = "SELECT idAlimento FROM Receita_Alimento WHERE idReceita =@id";
+            string query = "SELECT * FROM Receita_Alimento WHERE idReceita =@id";
 
             using (SqlCommand command = new SqlCommand(query, con))
             {
@@ -164,6 +165,7 @@ namespace JARVIS.DataAccess
                         foreach (DataRow row in table.Rows)
                         {
                             string alimento = row["idAlimento"].ToString();
+                            string quantidade = row["Quantidade"].ToString();
                             string query2 = "SELECT * FROM Alimento where idAlimento = @idAl";
                             using (SqlCommand command2 = new SqlCommand(query2, con))
                             {
@@ -183,8 +185,8 @@ namespace JARVIS.DataAccess
                                                 idAlimento = int.Parse(row2["idAlimento"].ToString()),
                                                 Nome = row2["Nome"].ToString(),
                                                 ValorNutricional = double.Parse(row2["ValorNutricional"].ToString()),
-                                                Validade = DateTime.Parse(row2["Validade"].ToString())
-
+                                                Validade = DateTime.Parse(row2["Validade"].ToString()),
+                                                Quantidade = quantidade
                                             };
                                             alimentos.Add(a);
                                         }
