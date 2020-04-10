@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{BF806999-2846-497D-AEDE-3CA00AB5835E}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="JARVIS/Data Access/UtilizadorDAO.cs">
+    <Files>
+      <File FileName="JARVIS/Views/Home/WeekPlan.cshtml" Line="1" Column="1" />
+      <File FileName="JARVIS/Data Access/ReceitaDAO.cs" Line="43" Column="1" />
+      <File FileName="JARVIS/Data Access/UtilizadorDAO.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="JARVIS" expanded="True">
+            <Node name="JARVIS" expanded="True">
+              <Node name="Data Access" expanded="True">
+                <Node name="UtilizadorDAO.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.JARVIS PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

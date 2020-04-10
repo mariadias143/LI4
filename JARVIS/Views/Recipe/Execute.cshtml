@@ -1,0 +1,33 @@
+﻿@model JARVIS.Models.Passo
+@{
+    Layout = "~/Views/Shared/_LayoutTeste.cshtml";
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ordem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Ordem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Descricao)
+        </td>
+    </tr>
+</table>
+<div class="row">
+    <img src="data:image;base64,@System.Convert.ToBase64String(Model.imagem)" style="margin-left:20%" />
+</div>
+<div class="container">
+    <ul class="pager">
+        <li> @Html.ActionLink("Prev", "Execute", new { idReceita = Model.idReceita, passo = Model.idPasso - 2, }, null)</li>
+        <li> @Html.ActionLink("Next", "Execute", new { idReceita = Model.idReceita, passo = Model.idPasso, }, null)</li>
+    </ul>
+</div>

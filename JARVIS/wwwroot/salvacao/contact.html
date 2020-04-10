@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JARVIS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lovers+Quarrel" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #myInput {
+            background-image: url('/css/searchicon.png');
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            width: 100%;
+            font-size: 16px;
+            padding: 12px 20px 12px 40px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+
+        #myTable {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #ddd;
+            font-size: 18px;
+        }
+
+            #myTable th, #myTable td {
+                text-align: left;
+                padding: 12px;
+            }
+
+            #myTable tr {
+                border-bottom: 1px solid #ddd;
+            }
+
+                #myTable tr.header, #myTable tr:hover {
+                    background-color: #f1f1f1;
+                }
+    </style>
+</head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light ftco-navbar-light-2" id="ftco-navbar">
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html">JARVIS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="menu.html" class="nav-link">Recipes</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link">Cookbook</a></li>
+                    <li class="nav-item"><a href="reservation.html" class="nav-link">Pantry</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Shopping List</a></li>
+                    <li class="nav-item active"><a href="login2.html" class="nav-link"><i class="fa fa-fw fa-user"></i> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+      <!-- END nav -->
+
+      <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_4.jpg');" data-stellar-background-ratio="0.5">
+          <div class="overlay"></div>
+          <div class="container">
+              <div class="row no-gutters slider-text align-items-center justify-content-center">
+                  <div class="col-md-9 ftco-animate text-center">
+                      <h1 class="mb-2 bread">Shopping List</h1>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for foods..." title="Type a food you would like to shop">
+
+        <table id="myTable">
+            <tr class="header">
+                <th style="width:60%;">Name</th>
+                <th style="width:60%;">Quantity</th>
+            </tr>
+            <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Berglunds snabbkop</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Island Trading</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Koniglich Essen</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>Laughing Bacchus Winecellars</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>Magazzini Alimentari Riuniti</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>North/South</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>Paris specialites</td>
+                <td>8</td>
+            </tr>
+        </table>
+
+        <script>function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}</script>
+
+
+
+      <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">JARVIS</h2>
+              <p>O seu assistente de cozinha, o seu melhor amigo.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+              </ul>
+            </div>
+          </div>
+
+    </footer>
+
+
+
+      <!-- loader -->
+      <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+
+      <script src="js/jquery.min.js"></script>
+      <script src="js/jquery-migrate-3.0.1.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/jquery.easing.1.3.js"></script>
+      <script src="js/jquery.waypoints.min.js"></script>
+      <script src="js/jquery.stellar.min.js"></script>
+      <script src="js/owl.carousel.min.js"></script>
+      <script src="js/jquery.magnific-popup.min.js"></script>
+      <script src="js/aos.js"></script>
+      <script src="js/jquery.animateNumber.min.js"></script>
+      <script src="js/bootstrap-datepicker.js"></script>
+      <script src="js/jquery.timepicker.min.js"></script>
+      <script src="js/scrollax.min.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+      <script src="js/google-map.js"></script>
+      <script src="js/main.js"></script>
+
+  </body>
+</html>

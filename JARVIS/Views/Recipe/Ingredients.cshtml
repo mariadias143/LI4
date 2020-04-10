@@ -1,0 +1,94 @@
+﻿@model JARVIS.Models.Receita
+@{
+    Layout = "~/Views/Shared/_LayoutTeste.cshtml";
+}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/salvacao/images/bg_4.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-2 bread">Ingredients</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-wrap-about ftco-no-pb ftco-no-pt">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-sm-5 img img-2 d-flex align-items-center justify-content-center justify-content-md-end" style="background-image: url(/salvacao/images/massa.jpg); position: page ">
+
+            </div>
+            <div class="col-sm-7 wrap-about py-5 ftco-animate">
+                <div class="heading-section mt-5 mb-4">
+                    <div class="pl-lg-5 ml-md-5">
+                        <span class="subheading">Receita @Model.idReceita</span>
+                        <h2 class="mb-4">Uma delícia!</h2>
+
+                    </div>
+                </div>
+                <div class="pl-lg-5 ml-md-5">
+
+                    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+                    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+                    <div class="container">
+
+                        <h3>Foods needed:</h3>
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                           
+                                                <table class="table">
+                                                    <tr>
+                                                        <th>Quantidade</th>
+                                                        <th>Alimento</th>
+                                                        <th>Disponivel</th>
+                                                    </tr>
+                                                    @foreach (var order in Model.Ingredientes)
+        {
+                                            <tr>
+                                                <td>
+                                                    <input type="hidden" name="Ingredientes.Index" value="@order.idAlimento" />
+                                                    <input type="hidden" name="Ingredientes.[@order.idAlimento].idAlimento" value="@order.idAlimento" />
+                                                    <input type="hidden" name="Ingredientes[@order.idAlimento].Nome" value="@order.Nome" />
+                                                    <input type="hidden" name="Ingredientes.[@order.idAlimento].Validade" value="@order.Validade" />
+                                                    <input type="hidden" name="Ingredientes[@order.idAlimento].ValorNutricional" value="@order.ValorNutricional" />
+                                                    @order.Quantidade
+                                                </td>
+                                                <td>
+                                                    @order.Nome
+                                                </td>
+                                                <td><label for="checkOption"><input name="Ingredientes[@order.idAlimento].IsChecked" type="checkbox" id="checkOption" value="true" /></label></td>
+                                            </tr>
+}
+                                                </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p>@Model.Descricao</p>
+                            <p>Dificuldade: @Model.Dificuldade</p>
+                            <p>Duração: @Model.Duracao</p>
+
+                            <h3>Let's begin!</h3>
+                            <span>@ViewBag.condicional</span>
+                            <button onclick="Check()" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-play-circle"></span> Start
+                            </button>
+                            </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

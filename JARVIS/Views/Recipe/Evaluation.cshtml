@@ -1,0 +1,66 @@
+﻿@model JARVIS.Models.Avaliacao
+@{
+    Layout = "~/Views/Shared/_LayoutTeste.cshtml";
+}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/salvacao/images/bg_4.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-2 bread">Evaluation</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section ftco-wrap-about ftco-no-pb ftco-no-pt">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-sm-5 img img-2 d-flex align-items-center justify-content-center justify-content-md-end" style="background-image: url(/salvacao/images/about.jpg); position: page ">
+
+            </div>
+            <div class="col-sm-7 wrap-about py-5 ftco-animate">
+                <div class="heading-section mt-5 mb-4">
+                    <div class="pl-lg-5 ml-md-5">
+                        <span class="subheading">Receita 1</span>
+                        <h2 class="mb-4">Uma delícia!</h2>
+
+                        <h3>Did you like this recipe?</h3>
+                        <span class="fa fa-star" id="star1" onclick="add(this,1)"></span>
+                        <span class="fa fa-star" id="star2" onclick="add(this,2)"></span>
+                        <span class="fa fa-star" id="star3" onclick="add(this,3)"></span>
+                        <span class="fa fa-star" id="star4" onclick="add(this,4)"></span>
+                        <span class="fa fa-star" id="star5" onclick="add(this,5)"></span>
+
+                        <p></p>
+
+                        <a class="btn btn-outline-info btn-rounded waves-effect" href="/Recipe">Submit</a>
+                        <script>
+                            function add(ths, sno) {
+
+
+                                    for (var i = 1; i <= 5; i++) {
+                                        var cur = document.getElementById("star" + i)
+                                        cur.className = "fa fa-star"
+                                    }
+
+                                    for (var i = 1; i <= sno; i++) {
+                                        var cur = document.getElementById("star" + i)
+                                        if (cur.className == "fa fa-star") {
+                                            cur.className = "fa fa-star checked"
+                                        }
+                                    }
+
+                            }
+                        </script>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

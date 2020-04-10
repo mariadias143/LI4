@@ -1,0 +1,128 @@
+﻿@model JARVIS.Models.Utilizador
+
+@{
+    Layout = null;
+}
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        padding-left: 200px;
+        padding-right: 200px;
+        padding-top: 30px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Full-width input fields */
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+    }
+
+    /* Set a style for the submit button */
+    .registerbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px 16px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+
+        .registerbtn:hover {
+            opacity: 1;
+        }
+
+    /* Add a blue text color to links */
+    a {
+        color: dodgerblue;
+    }
+
+    /* Set a grey background color and center the text of the "sign in" section */
+    .signin {
+        text-align: center;
+    }
+</style>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h3>Register</h3>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <label for="Nome">Name</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Enter Name" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="DataNascimento">Birthday</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control", @type = "date", @placeholder = "Enter Birth Date" } })
+                @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Username">Username</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Enter Username" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Password">Password</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Repeat Password" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Enter Email" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Foto">Photo</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ImageUpload, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Enter Photo Path" } })
+                @Html.ValidationMessageFor(model => model.ImageUpload, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Register" class="registerbtn" />
+            </div>
+        </div>
+        <div class="container signin">
+            <p>Already have an account? <a href="~/Home/Login">Sign in</a>.</p>
+        </div>
+        <h3>@ViewBag.Message</h3>
+    </div>
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

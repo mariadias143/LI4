@@ -1,0 +1,32 @@
+﻿@model JARVIS.Models.Utilizador
+
+<p>
+    @Html.ActionLink("Create New", "Register")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th></th>
+    </tr>
+
+    
+        <tr>
+           
+            <td>
+                <img src="data:image;base64,@System.Convert.ToBase64String(Model.Foto)" />
+
+            </td>
+         
+        </tr>
+    
+
+</table>

@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Pantry";
+    Layout = "~/Views/Shared/_LayoutTeste.cshtml";
+}
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    #myInput {
+        background-image: url('/css/searchicon.png');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+    }
+
+    #myTable {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+        font-size: 18px;
+    }
+
+        #myTable th, #myTable td {
+            text-align: left;
+            padding: 12px;
+        }
+
+        #myTable tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+            #myTable tr.header, #myTable tr:hover {
+                background-color: #f1f1f1;
+            }
+</style>
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/salvacao/images/bg_4.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-2 bread">Pantry</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for foods..." title="Type a food you would like to search">
+
+<table id="myTable">
+    <tr class="header">
+        <th style="width:60%;">Name</th>
+        <th style="width:60%;">Quantity</th>
+    </tr>
+    <tr>
+        <td>Massa</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>Arroz</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>Ovos</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>Salsichas</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>Cebolas</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>Atum</td>
+        <td>6</td>
+    </tr>
+</table>
+
+<script>function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }</script>

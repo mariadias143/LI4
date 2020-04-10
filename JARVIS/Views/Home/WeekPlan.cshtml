@@ -1,0 +1,140 @@
+﻿@{
+    ViewData["Title"] = "Weekly Plan";
+}
+<body>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script type="text/javascript">function tornarTabelaEditavel(tabela) {
+            // Obtém todas as tds da tabela fornecida.
+            var tdlist = tabela.getElementsByTagName("td");
+
+            for (var i = 0; tdlist[i]; i++) {
+                if ((i != 3 && i != 7 && i != 11 && i != 15 && i != 19 && i != 23 && i != 27)) {
+
+                    // Adiciona o evento double click em cada td da tabela.
+                    tdlist[i].ondblclick = function () {
+                        // Se for texto, muda para input.
+                        if (this.firstChild.nodeType == 3) {
+                            // Cria um campo de texto editável e insere o valor da td nesse campo.
+                            var campo = document.createElement("input");
+                            campo.value = this.firstChild.nodeValue;
+
+                            // Substitui o texto da td pelo campo.
+                            this.replaceChild(campo, this.firstChild);
+
+                            campo.select();
+
+                            // Faz o processo inverso ao perder o foco.
+                            campo.onblur = function () {
+                                this.parentNode.replaceChild(document.createTextNode(this.value), this);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        window.onload = function () {
+            tornarTabelaEditavel(document.getElementById('idtabela'));
+        }</script>
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            #myInput {
+                background-image: url('/css/searchicon.png');
+                background-position: 10px 10px;
+                background-repeat: no-repeat;
+                width: 100%;
+                font-size: 16px;
+                padding: 12px 20px 12px 40px;
+                border: 1px solid #ddd;
+                margin-bottom: 12px;
+            }
+
+            #idtabela {
+                border-collapse: collapse;
+                width: 100%;
+                border: 1px solid #ddd;
+                font-size: 18px;
+            }
+
+                #idtabela th, #idtabela td {
+                    text-align: left;
+                    padding: 12px;
+                }
+
+                #idtabela tr {
+                    border-bottom: 1px solid #ddd;
+                }
+
+                    #idtabela tr.header, idtabela tr:hover{
+                        background-color: #f1f1f1;
+                    }
+        </style>
+    </head>
+
+
+
+    <h2>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAmVBMVEVLX4P////m5uYip/AiMT88VHvz+f4AoO9BV36psL9MXH4gqvTy8vLn5+c7gbfu7u739/dFW4HM0do5UXpMYIRhcpGyucceLTkiKzYiIyhWaIrX2+KQm7Cdprnz9feGk6l7iaLi5evBxtFrepe7ws5md5WYorUoN0hWha1EhrhMksV4hqFCVXQ3svZAn9sieq0iP1UiiMIiR2DzHvqBAAAK7ElEQVR4nOWdaXebOBSGwYlmFMceI8BkgjEGY6ftpO208/9/3AjwAjKLriRAst9z+kFNTPQY6S5aLXtwxal7CF6iJDuuw9D3/TBcH7MkegkObhoP/+etAZ9N0ba7LPQ8hDEmxKqKEPp/yPPCbLcdFnQownQfZSFGLNitKCrCYRbt04FqMgRhGiQ+Rr1sdU6E/SRIB6iNasLYjXwPQ+AqmNjzI1d1i1VKuDokBInRXSgRSQ4rlZVSR+jsPy1JvDOk9bl3lNVLFeEmQkrwzpAo2iiqmRLCODh66vBOkN4xUNIlFRCmH77C11dhRP5HKl89acI0IXgAvFKYJNKMkoSbTHnzrIt4mWSHlCLcJAPzlYyJFKMEYZoIenYwI07SCQjjaBDz0sKIImG7KkoYDGhfmoRJMCrhZo1G5cuF1mLdUYgwGqkD1kVwNBKhO3IDvQoTdwTCeOdNxJfL24EtDpTQDad6gaVwCH2NQMLt+BaGFdoOSJhOYEJvhdbpUISuNYUJvRWxIC0VQPiiwwsshV6GIEz0AaSIiXLCeGIbygqHvG6DkzAN9eiCV5EwVUnogoZ3xxHhDHC4CA9ThjHt8g6qCAM9ASkiT0bFQaiRl2DF4zX6CTUI1NrFEcL1Em51baKlvF7EPkKNm2ip3obaQxjoDkgRe8xNN6GmbqKuHqfRSeiaAEgRO11/F2GqXyDTLJKKEcbaxaJtIl1heAehMYA5oghhole61C3cni+2EmrvCOtqd4tthK5ZgBSxzaC2EKZTV1hAKYhwbY6VOYusIYRa5xNtaskzGgmN64SlmrtiE2EcTl1XQTU6/ibCnUmesCq84yM0JN5uUlMM3kBonhm9ivAQRqa20VwNE+E3hBuTASnizXKGG0IDfX1Vt36fJTRgYKZbN8M2DGFs9hvMReJOQhEz4+dSX1PR57LGpk6YCrRR//uX5y/f1SMKPxelHYQJvJH639+en5/flCOKP5ck7YQinsL/8pzri3JC8efWPUaNUOAVWn5Rkec3+Cd79FY+WICw/hKrhBuRgFRDQsvbtBBmIq5CR0KSNROmQjmFjoSWlzYSivRCTQmrPfFKKDhLoSVhdSbjSvgBcxXzk86Ec9U6E57LoNrhj1vCGPRlzedfv/1VqqzJ33+p1t/lN3cqffsKY/TjG0JQUjH/58frWWVN3l9V67385i7lH/9AEK8pxoXwCOiG4c/Xp7POhE+qdSa8/qWfgDFAcmQJId5+XgEckZAiAt7ixeufCSP+Vzj/WvmrYxI+vX7lRyRRndAB9ML5z2pFxiR8grxE5NQI9xDCH5MR/oAQ7muEnwA7M6/90VEJXwGE5LNKuOL/4A3hf4VD/KWc8FfhDv8TJrSsVYXwAHKG9T/6+50ivv/7+qRWr//Sl/j2/lucEB0qhKCgu05IEX+9/1IOmCPS5/5m/haE8BR+F4SwMUSG8On19E854u1zYa20HFcsCGEzoizhiIIRljOmFtDdm0RYOv2CEJaDGUNo+WdC4PCFOYTFYEZOGABzX2MIcXAiBA7QzP+cTjDCwl9Y4G5oIfuPqWQD51X8kjAFjuUjezoBCXFaEELyCsMI8/zCgnpDowhzj2jBB/NNIsxyQvAaL4MI83VgFtjQGEVITY0FX4hoEiENvi17e9fvcEsJd9AZGW7CxXJWaHka9VrNmsunI/ac86+z5YU4IdlRQvC8KC/hGYCqQFpey3a9vCyArj9eMeUrIpgwo4Tg5bK8hLN6lSs1Lqq8qJSd+hcyY76QpTChFdpWDJ755SSsEs0YohVDtKgTFcQzpixG6MUWfG7bLMLUgq9aN4oQudYBvErIKEJ8sIAJvhjhkimvGOImwmr58lA4YWC9DEVYrWJh7hkChyFYMOXKO76eSQsnfLGguRM/ocPU8Fou/dsVqWyEK6Z8+YauzgJOSCILvoqGP2pzFoWcetmx28qNv76oHrgLJ0ysDPoZo+JSi/Id75zwaK3vnHBtwXdxXQjZ4N9hcomb3GJZN41sbrFqeZxEbkEDUwlCNhmomPtFFWDGl1tUvIm63CInhK+MOxOyLplNBio/ni63oHzihDOmirN6FfWI2h6CULwfmkEoY2lMIRT3h11Vsm9zCxlCCUuzlohpKlUujB2bDAByC8fuzC1kbOlRJi5d1mp4kwy05xYr5hsq/d0guQXlk8ktmnOH9vKiXj79eMH7cRFCmlsMlx8OIZH8cLgcXwtCmuMPNk6jCWEgM9bWmgwwucWqXl5ecotl7eM2+7hV/XFihAeJ8VI2+K+Ye6dS4aZy8flRcgvkSox59yUDlR9Pl1t4qcS8xYyp4qxeRZVRmwRhLDH3NCKheFwayswfmkBYzB8KzwEbQbiTmccHEE6WWxTz+MJrMdjgX8fcoliLIb6ehju3KMtXhBXzDfXlFo4wYbGeRmJNVF9y0JJL9JXbHi9AWKyJuv91bQ+wNvH+15eKrxFeLQudcwenrXz69cWyubxgHlfteHKEpzXC8HXeJwDGG1TKBWLF/JcAjG29muISecaUFRCe1nlD1+qPlFsoILys1Qem+SNFbQoIL/stgCmiOYSXPTPAjmgO4WXfE9AjGkNY2bsGC75Hyi3kCSv7D2F7SNtyi0oVV8w3wJYXdn9uoeAdXveQwvxFW27hSOYWbKoiS1jdBwzby32NaRarQouWsnMqO/XyorW8qpclCWt7uUH78Y2JS6v78UFnKhhCWD9TAZRfICVXngsphlSzfi4G5GwTpOrmerg2kGrWzzaBOH3m5MUxBbD57Pk0oDOGsMCdtUrkAlKEmzOGQOdE+dO00w0gfr49Jwp21hcG3JKpTKDZ6oazvmDntWH0uX0ZU9tPBMpiG85rg565R/C4go1DNJ25Z87tTjxqPDdR8OxLLdV89qXg+aVaquX8UrEzaHVU2xm0YucI66jWc4TvpSe2nwVt+s0PZ3Wc530fL7HrTHahc/W1U+e5+mZfwVKq+26EB7jf4v7vKHmAe2ZM9xgcdwWZbWx47nt6gDu7HuDetfu/O+8B7j+8/zssH+AeUiP9Puwu2Qe4D9i8rgi90/kB7uV+gLvVbTs0x9qQsB2jgzA2BpE0uvp+QnNmMiqzFDBCU2Lwpnibk9A+mIDoHToZuglNGLa5GZiBEervFtsdISehvdW7oXrN4TaEUO88oyWfgBHq3FB7mygfoR3o2lC9HiPDTair0+hxExBC2yX6hTeE8C0+4yO0U+1iVBKmfFXnJKRhuF7JFO4KtoUIab6ok0lF/CtA+Ql18ho8XkKA0HYtPTojsSALXCGEdrrW4TWidQqpNIhQixCOI1CTIbTdiW0qDqFLsKGEdrybMsDxduCtEGDCPMCZ6jVizjBGljCfCJ/CqJKGKeyhCO3NBEYVrcV2CIgR0oxq5KaKCU+mpJLQjiM0XlMlKBLebCVMSP1/MlJ3JDhJxaspQUi7Y+INz0i8RGqLjhQhZcwGZiReJrkFSZIwb6sD2hxMklS2gtKElPHDH8ToEOR/SPMpIaR2NTgqb6zEOwZKNqsqIaTaREjhiyQIRap2AKoitG1n/2kpgSTI+tx37FgHSh0h1eqQEElI+vnk0H4Cj4CUElLFbuR7gpEAwZ4fuap3iqsmzJUGiY8RaBCZEIT9JEgHqM0QhLnSfZSFGOFeTkLob4VZtE8HqslQhLni1N3ustDzUL4HlLBgGCPPC7Pd1k2HPMNgSMKTKOgheImS7LgOQ9/3w3B9zJLoJTgMi3bS/yA3IJL+lPnrAAAAAElFTkSuQmCC"
+             width="50"
+             height="50">
+        Week starting at: 20 May 2019
+    </h2>
+
+    <table id="idtabela">
+        <tr class="header">
+            <th style="width:40%;">Breakfast</th>
+            <th style="width:40%;">Lunch</th>
+            <th style="width: 40%;">Dinner</th>
+            <th style="width: 40%;">Day</th>
+        </tr>
+        <tr>
+            <td>Eggs</td>
+            <td>Pasta</td>
+            <td>Francesinha</td>
+            <td>Monday <br> 20/5/2019</td>
+        </tr>
+        <tr>
+            <td>Eggs</td>
+            <td>Pasta</td>
+            <td>Francesinha</td>
+            <td>Tuesday<br> 21/05/19</td>
+        </tr>
+        <tr>
+            <td>Eggs</td>
+            <td>Pasta</td>
+            <td>Francesinha</td>
+            <td>Wednesday <br> 22/5/2019</td>
+        </tr>
+        <tr>
+            <td>Eggs</td>
+            <td>Pasta</td>
+            <td>Francesinha</td>
+            <td>Thursday <br> 23/5/2019</td>
+        </tr>
+        <tr>
+            <td>Eggs</td>
+            <td>Pasta</td>
+            <td>Francesinha</td>
+            <td>Friday <br> 24/5/2019</td>
+        </tr>
+        <tr>
+            <td>Eggs</td>
+            <td>Pasta</td>
+            <td>Francesinha</td>
+            <td>Saturday <br> 25/5/2019</td>
+        </tr>
+        <tr>
+            <td>Eggs</td>
+            <td>Pasta</td>
+            <td>Francesinha</td>
+            <td>Sunday<br> 26/5/2019</td>
+        </tr>
+    </table>
+   </body>
+
